@@ -1,0 +1,26 @@
+\documentclass[android.tex]{subfiles}
+\usepackage{subfiles}
+\documentclass[12pt,oneside]{memoir} 
+\usepackage[latinica]{matfmaster} 
+
+\begin{document}
+
+\begin{figure}[!ht]
+  \centering
+  \label{fig:arhitektura}
+  \includegraphics[width=0.9\textwidth]{arhitekturaSrp.png}
+  \caption{Arhitektura Android OS, slika kreirana na osnovu \cite{sajt:androidDevelopersArhitektura}}
+\end{figure}
+
+Android platforma je bazirana na Linux jezgru (eng. \textit{Linux kernel}) pri čemu se jezgro i drajveri nalaze u prostoru jezgra (eng. \textit{kernel space}), a nativne biblioteke u korisničkom prostoru (eng. \textit{user space}). Sve aplikacije se izvršavaju u Java virtuelnoj mašini koja se zove \textit{Android Runtime (ART)}, a postoje Java biblioteke koje povezuju aplikaciju sa bibliotekama napisanim u nativnom jeziku. Sama arhitektura softvera kod Androida je slojevita i postoje četiri sloja koja se naslanjaju na sloj fizičke arhitekture. Slojevi arhitekture prikazani su na slici \ref{fig:arhitektura}, a navedeni od viših ka nižim (eng. \textit{top-down}) su\cite{book:papp}:
+\begin{enumerate}
+\item \textbf{Aplikativni sloj} (eng. \textit{Application layer}) - Predstavlja skup svih aplikacija koje se izvršavaju na Androidu. Aplikacije mogu biti sistemske, ugrađene ili korisničke. Sistemske su one koje su napisane od strane proizvođača uređaja, ugrađene su one koje su drugi kreirali ali su unapred instalirane na uređaj i ne mogu se obrisati, a sve ostale su korisničke.
+\item \textbf{Sloj radnog okvira} (eng. \textit{Frameworks layer})- Predstavlja sloj koji omogućuje da se premoste razlike između aplikativnog i nativnog sloja i koji određuje ograničenja koja moraju da se poštuju pri razvoju Android aplikacija. Ovaj sloj je napisan u programskom jeziku Java, a pomoću JNI(\textit{Java Native Invocation}) komunicira sa nativnim slojem. Najbitniji elementi sloja mogu se videti na slici \ref{fig:arhitektura}, a neki od njih su: menadžer aktivnosti koji upravlja životnim ciklusom aplikacije, menadžer paketa koji poseduje informacije o svim instaliranim aplikacijama na uređaju, menadžer lokacije koji pronalazi geografsku lokaciju uređaja i menadžer telefonije koji omogućava pristup sadržajima telefonije kao što su brojevi telefona. 
+\item \textbf{Nativni sloj} (eng. \textit{Runtime layer}) - Napisan je u nativnom jeziku (C ili C++), sastoji se od nativnih biblioteka, biblioteka za apstrakciju hardvera (\textit{HAL}) i jezgra za Android (eng. \textit{Android runtime}) u koji spadaju osnovne bibilioteke i ART. Do verzije 5.0 ART nije postojao već je korišćena \textit{Dalvik virtuelna mašina (DVM)} \cite{sajt:dalvik}. 
+\item \textbf{Sloj jezgra} (eng. \textit{Kernel layer})- Predstavlja sloj između hardvera i softvera koji poseduje sve drajvere koji su potrebni za hardverske komponente. Takođe, u ovom sloju je moguće pronaći sve vezano za upravljanje memorijom, procesima i uključivanjem, kao i o bezbednosti. 
+\end{enumerate}
+
+
+
+
+\end{document}

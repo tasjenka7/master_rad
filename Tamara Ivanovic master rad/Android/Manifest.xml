@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+	<!-- Navodi se za svaku dozvolu koju aplikacija zahteva -->
+    <uses-permission android:name="string"/>
+   	<!-- Definise bezednosnu dozvolu za ogranicavanje pristupa funkcijama ili komponentama-->
+    <permission />
+    <!-- Definise kompatibilnost aplikacije sa verzijama Androida -->
+    <uses-sdk/>
+    <!--Definise hardverske i softverske karakteristike koje aplikacija zahteva  -->
+    <uses-configuration />  
+    <!-- Deklarise aplikaciju i sve njene elemente-->
+    <application>
+		<!-- Definise aktivnost -->
+        <activity>
+    		<!-- Definise tipove namera koje aktivnost podrzava -->
+            <intent-filter> . . . </intent-filter>
+           	<!-- Par ime vrednost za dodatne podatke koji se dodeljuju roditeljskoj komponenti-->
+            <meta-data />
+        </activity>		
+		<!-- Alias za aktivnost, moze imati svoje drugacije postavke u odnosu na aktivnost -->
+        <activity-alias> . . . </activity-alias>
+		<!-- Deklarise servis i njenove intent-filter i meta-data -->
+        <service> . . . </service>		
+		<!-- Deklarise prijemnik-->
+        <receiver> . . . </receiver>		
+		<!-- Definise provajdera sadrzaja-->
+        <provider> . . . </provider>
+		<!-- Definise deljenu biblioteku sa kojom aplikacija mora biti vezana. -->
+        <uses-library />
+    </application>
+</manifest>

@@ -1,0 +1,19 @@
+\documentclass[implementacija.tex]{subfiles}
+\usepackage{subfiles}
+\documentclass[12pt,oneside]{memoir} 
+\usepackage[latinica]{matfmaster} 
+
+\begin{document}
+
+\subsection{Instalacija}
+Instaliranje Android aplikacija na mobilne telefone je moguće na više načina, ovde će biti reči o dva. U \textit{Android Studio}-u je potrebno odabrati opciju \textit{build} nakon čega se u \textit{build} direktorijumu projekta može pronaći datoteka pod nazivom \textit{app-debug.apk}. \textbf{APK} (eng. \textit{Android Package}) predstavlja format datoteka koji Android OS koristi za instaliranje i distribuciju aplikacija. 
+
+Da bi instalacija bila moguća potrebno je omogućiti opcije programera (eng. \textit{developer options}) na mobilnom uređaju i da se uređaj poveže pomoću USB kabla sa računarom na kom se nalazi k\^{o}d. Prva mogućnost pokretanja je da se u \textit{Android Studio}-u pritisne dugme \textit{Run}. Druga opcija je da na računaru postoji instaliran \textbf{adb} (eng. \textit{Android Debug Bridge}) i u terminalu da se pokrene komanda \verb|adb install app-debug.apk|. 
+
+
+\subsection{Pokretanje i korišćenje}
+Nakon instalacije aplikacije pri prvom pokretanju prikazuje se ekran /slika/ koji obaveštava korisnika da je potrebno dozvoliti korišćenje mikrofona. Nakon toga se pojavljuje sistemsko obaveštenje o traženju dozvole sa opcijama da korisnik da dopuštenje ili odbije. U slučaju da ovo nije prvo pokretanje aplikacije ova dva obaveštenja neće biti prikazana. Aplikacija započinje traženje uređaja koji imaju instaliranu \textit{True} aplikaciju, a nalaze se na istoj mreži. Pretraga je ograničena na 30 sekundi, pri čemu ukoliko se ne pronađe nijedan uređaj korisnik dobija  adekvatno obaveštenje sa izborom da li da se zatvori aplikacija ili ponovo pokuša traženje. Svi uređaji koji su pronađeni se ispisuju na ekranu. Pritiskom na naziv ogdovarajućeg uređaja potrebno je upariti uređaje. Na stb-u sa kojim se pokušava uparivanje se prikazuje četvorocifren broj. Polje za unos tog broja se prikazuje u aplikaciji. Nakon uspešnog unosa uređaji se uparuju, a uspešno uparivanje potvrđuje i prikaz daljinskog upravljača. Sve podržane funkcionalnosti, kao i izgled ovog daljinskog upravljača biće objašnjeni u nastavku. 
+
+Dalje korišćenje aplikacije je isto kao i korišćenje fizičkog daljinskog upravljača. Pri svakom pritisku dugmeta će korisnik osetiti blagu vibraciju što ujedno obaveštava i da je dugme kliknuto. U verziji koja koristi običan mikrofon preko ekrana se pojavljuje polje koje je generisano od strane \textit{Google}-a i pri završenom slušanju pored izvršavanja komande ispisuje šta je rečeno. Za razliku od ove verzije ona koja koristi \textit{Google Cloud API} pri pritisku mikrofona nema nikakvih dodatnih prikaza na ekranu. U slučaju da aplikacija ne prepozna komandu o tome obaveštava korisnika sa adekvatnom porukom. Ukoliko korisnik želi da prekine konekciju sa uređajem dovoljno je da pritisne dugme sa otkazivanje konekcije koje ga vraća na početni ekran aplikacije.  
+
+\end{document}

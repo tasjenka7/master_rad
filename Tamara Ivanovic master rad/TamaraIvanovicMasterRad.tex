@@ -1,0 +1,139 @@
+\documentclass[12pt,oneside]{memoir} 
+\usepackage[latinica]{matfmaster} 
+\usepackage{subfiles}
+\usepackage{listings}
+\bib{literatura-rad}
+
+
+%----------------- TODO: Prebaciti u matfmaster.sty ako je moguce 
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+%------------------
+
+\autor{Tamara D. Ivanović}
+% Naslov teze na srpskom jeziku (u odabranom pismu)
+\naslov{Master iz matematike ili računarstva čiji je naslov jako dugačak}
+
+\godina{2023}
+
+\mentor{dr Milena \textsc{Vujošević Janičić}, vanredni profesor\\ Univerzitet u Beogradu, Matematički fakultet}
+
+% Ime i afilijacija prvog člana komisije (u odabranom pismu)
+\komisijaA{dr Ana \textsc{Anić}, vanredni profesor\\ University of Disneyland, Nedođija}
+% Ime i afilijacija drugog člana komisije (u odabranom pismu)
+\komisijaB{dr Laza \textsc{Lazić}, docent\\ Univerzitet u Beogradu, Matematički fakultet}
+% Ime i afilijacija trećeg člana komisije (opciono)
+% \komisijaC{}
+% Ime i afilijacija četvrtog člana komisije (opciono)
+% \komisijaD{}
+% Datum odbrane (odkomentarisati narednu liniju i upisati datum odbrane ako je poznat)
+% \datumodbrane{}
+
+% Apstrakt na srpskom jeziku (u odabranom pismu)
+\apstr{%
+ Apstrakt rada na srpskom jeziku u odabranom pismu
+}
+
+% Ključne reči na srpskom jeziku (u odabranom pismu)
+\kljucnereci{analiza, geometrija, algebra, logika, računarstvo, astronomija}
+
+\begin{document}
+% ==============================================================================
+% Uvodni deo teze
+\frontmatter
+% ==============================================================================
+
+\naslovna
+
+\komisija
+%Strana sa posvetom
+\posveta{Mami, tati i dedi}
+
+\apstrakt
+
+\tableofcontents*
+
+% ==============================================================================
+% Glavni deo teze
+\mainmatter
+% ==============================================================================
+
+% ------------------------------------------------------------------------------
+\chapter{Uvod}
+% ------------------------------------------------------------------------------
+
+
+% ------------------------------------------------------------------------------
+\chapter{Android}
+\label{chp:android}
+\subfile{Android/android}
+
+% ------------------------------------------------------------------------------
+\chapter{Implementacija aplikacije}
+\label{chp:implementacija}
+\subfile{Implementacija/implementacija}
+% ------------------------------------------------------------------------------
+
+
+% ------------------------------------------------------------------------------
+\chapter{Zaključak}
+% ------------------------------------------------------------------------------
+
+% ------------------------------------------------------------------------------
+% Literatura
+% ------------------------------------------------------------------------------
+\literatura
+
+% ==============================================================================
+% Završni deo teze i prilozi
+\backmatter
+% ==============================================================================
+
+% ------------------------------------------------------------------------------
+% Biografija kandidata
+\begin{biografija}
+  \textbf{Vuk Stefanović Karadžić} (\emph{Tršić,
+    26. oktobar/6. novembar 1787. — Beč, 7. februar 1864.}) bio je
+  srpski filolog, reformator srpskog jezika, sakupljač narodnih
+  umotvorina i pisac prvog rečnika srpskog jezika.  Vuk je
+  najznačajnija ličnost srpske književnosti prve polovine XIX
+  veka. Stekao je i nekoliko počasnih mastera.  Učestvovao je u
+  Prvom srpskom ustanku kao pisar i činovnik u Negotinskoj krajini, a
+  nakon sloma ustanka preselio se u Beč, 1813. godine. Tu je upoznao
+  Jerneja Kopitara, cenzora slovenskih knjiga, na čiji je podsticaj
+  krenuo u prikupljanje srpskih narodnih pesama, reformu ćirilice i
+  borbu za uvođenje narodnog jezika u srpsku književnost. Vukovim
+  reformama u srpski jezik je uveden fonetski pravopis, a srpski jezik
+  je potisnuo slavenosrpski jezik koji je u to vreme bio jezik
+  obrazovanih ljudi. Tako se kao najvažnije godine Vukove reforme
+  ističu 1818., 1836., 1839., 1847. i 1852.
+\end{biografija}
+% ------------------------------------------------------------------------------
+
+\end{document}

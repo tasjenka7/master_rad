@@ -1,0 +1,21 @@
+\documentclass[struktura.tex]{subfiles}
+\usepackage{subfiles}
+\documentclass[12pt,oneside]{memoir} 
+\usepackage[latinica]{matfmaster} 
+
+\begin{document}
+Brojne aktivnosti su potrebne da se izvrše pre nego što korisnik može da počne da koristi daljinsko upravljanje. Provera povezanosti na internet, potraga za uređajima na mreži koji poseduju zadatu aplikaciju kao i uparivanje sa njima čine jednu logičku celinu. Klase koje omogućavaju sve navedeno grupisane su u paket \textbf{stbs}.
+
+\textbf{ChooseAdapter} klasa nasleđuje klasu \textit{RecyclerView.Adapter} i služi da prikaže listu stb uređaja. Obezbeđuje \textit{ViewHolder} za svaku stavku iz liste i povezuje njegove podatke za odgovarajući pogled iz \textit{ViewHolder}-a. Klasa je kreirana tako da se koristi uz \textit{RecyclerView} koji je pogodniji za rad sa velikim skupovima dodataka u odnosu na \textit{ListView}. Konstruktor ove klase se koristi pri ubrizgavanju (eng. inflate) pogleda za svaku stavku \textit{RecyclerView}-a. Metod \textit{registerClickListener} postavlja vrednost \textit{clickListener}-u koji će omogućiti da pri pritisku stavke iz \textit{RecyclerView}-a pozove klasu \textit{OnItemClickedListener}. S obzirom da klasa nasleđuje \textit{RecyclerView.Adapter} klasu nekoliko njenih metoda je  prepisano(eng. \textit{override}). \textit{onCreateViewHolder()} se poziva pri kreiranju \textit{ViewHolder}-a, \textit{onBindViewHolder()} kada je potrebno da se prispoje podaci za \textit{ViewHolder} i \textit{getItemCount()} vraća ukupan broj stavki. Još jedna bitna metoda je \textit{refresh()} koja ažurira podatke prikazane u \textit{RecyclerView}-u. Mehanizam po kom radi je da ažurira privatni skup \textit{stbs} sa podacima koji su prosleđeni i poziva metod \textit{notifyDataSetChanged()} koji ažurira poglede u \textit{RecyclerView}-u. \textit{ChooseAdapter} klasa poseduje unutrašnju klasu \textbf{ChooseViewHolder}. To je \textit{ViewHolder} za stavke iz \textit{RecyclerView}-a. Obezbeđuje metodu \textit{getNameView()} koja vraća tekstualno polje tipa \textit{TextView} koji skladišti ime stb-a
+
+\textbf{ChooseConnection} 
+% je aktivnost koja je odgovorna za prikaz liste stb-ova koji su otkriveni na lokalnoj mreži i omogućuje korisniku da se poveže na neki od njih. Uključuje RecyclerView koji prikazuje listu dostupnih stb-ova i feature <<naci prevod>> za uparivanje Android uređaja sa odabranim stb-om. Ovaj feature prikazuje prozor sa poljem za unos koda za uparivanje i dugmetom za slanje unetog koda. Kada se odabere stb i uređaj upari sa njim otvara se RemoteView aktivnost. Kako bi se obezbedilo da korisnik ne mora da bira uređaj svaki put kada otvori aplikaciju obezbeđeno je da se u SharedPreferences čuva adresa odabranog stb-a. 
+
+\textbf{DiscoveryHandler}
+
+\textbf{NsdDIscover}
+
+\textbf{Stb}
+
+
+\end{document}
