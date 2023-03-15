@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#004C69"
+    >
+
+
+    <ImageButton
+        android:id="@+id/powerBtn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:contentDescription="@string/power"
+        android:onClick="onClick"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_lock_power_off"
+        app:tint="@color/white" />
+
+
+    <Button
+        android:id="@+id/guideBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        android:onClick="onClick"
+        android:text="@string/guide"
+        android:textColor="#5D4037"
+        app:backgroundTint="#BF39FF50"
+        app:layout_constraintEnd_toStartOf="@+id/disconnectBtn"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toEndOf="@+id/powerBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/disconnectBtn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="25dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/circle_button"
+        app:srcCompat="@drawable/disconnect_button_white"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearLayout13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/powerBtn">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/one"
+            android:textColor="#000000"
+            app:backgroundTint="#2194BF" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/two"
+            android:textColor="#000000"
+            app:backgroundTint="#2194BF" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/three"
+            android:textColor="#000000"
+            app:backgroundTint="#2194BF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout46"
+        android:layout_width="264dp"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/four"
+            android:textColor="#000000"
+            app:backgroundTint="#2194BF" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/five"
+            android:textColor="#000000"
+            app:backgroundTint="#2194BF" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/six"
+            android:textColor="#000000"
+            app:backgroundTint="#2194BF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout79"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout46">
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/seven"
+            android:textColor="#000000"
+            app:backgroundTint="#2194BF" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/eight"
+            android:textColor="#000000"
+            app:backgroundTint="#2194BF" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/nine"
+            android:textColor="#000000"
+            app:backgroundTint="#2194BF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout79">
+
+        <Button
+            android:id="@+id/movieBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/movie"
+            android:textColor="#000000"
+            app:backgroundTint="#BF39FF50" />
+
+        <Button
+            android:id="@+id/button0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/zero"
+            android:textColor="#000000"
+            app:backgroundTint="#2194BF" />
+
+        <Button
+            android:id="@+id/liveTvBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:onClick="onClick"
+            android:text="@string/live"
+            android:textColor="#000000"
+            app:backgroundTint="#BF39FF50" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/upBtn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/arrow"
+        android:contentDescription="@string/up"
+        android:onClick="onClick"
+        app:backgroundTint="#BF39FF50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal"
+        app:backgroundTint="#BF39FF50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upBtn">
+
+        <Button
+            android:id="@+id/leftBtn"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/arrow"
+            android:contentDescription="@string/left"
+            android:onClick="onClick"
+            android:rotation="270"
+            app:backgroundTint="#BF39FF50" />
+
+        <Button
+            android:id="@+id/okBtn"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle_button"
+            app:backgroundTint="#2194BF"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:text="@string/ok" />
+
+        <Button
+            android:id="@+id/rightBtn"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/arrow"
+            android:contentDescription="@string/right"
+            android:onClick="onClick"
+            android:rotation="90"
+            app:backgroundTint="#BF39FF50" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/downBtn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:background="@drawable/arrow"
+        android:contentDescription="@string/down"
+        android:onClick="onClick"
+        android:rotation="180"
+        app:backgroundTint="#BF39FF50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutOk" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutBackHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/downBtn">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#2194BF"
+            android:contentDescription="@string/back"
+            android:onClick="onClick"
+            app:srcCompat="@android:drawable/ic_menu_revert"
+            app:tint="@color/black"
+            tools:ignore="ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/micBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#2194BF"
+            android:contentDescription="@string/mic"
+            android:onClick="onClick"
+            app:srcCompat="@android:drawable/ic_btn_speak_now"
+            app:tint="@android:color/holo_red_dark"
+            tools:ignore="ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/micBtnOriginal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#2194BF"
+            android:contentDescription="@string/mic"
+            android:onClick="onClick"
+            app:srcCompat="@android:drawable/ic_btn_speak_now"
+            app:tint="#E48B8B"
+            tools:ignore="ImageContrastCheck" />
+
+        <Button
+            android:id="@+id/homeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:text="@string/home"
+            android:textColor="#000000"
+            app:backgroundTint="#2194BF" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/channelVolMute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutBackHome"
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayoutVol"
+            android:layout_width = "wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/volPlusBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="@string/volu"
+                android:textColor="#000000"
+                app:backgroundTint="#BF39FF50" />
+
+            <Button
+                android:id="@+id/volMinusBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="@string/vold"
+                android:textColor="#000000"
+                app:backgroundTint="#BF39FF50" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/muteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:contentDescription="@string/mute"
+            android:onClick="onClick"
+            app:backgroundTint="#2194BF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:srcCompat="@android:drawable/ic_lock_silent_mode"
+            app:tint="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutCh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp"
+            >
+
+            <Button
+                android:id="@+id/chPlusBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                app:backgroundTint="#BF39FF50"
+                android:textColor="#000000"
+                android:text="@string/chu" />
+
+            <Button
+                android:id="@+id/chMinusBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:backgroundTint="#BF39FF50"
+                android:textColor="#000000"
+                android:onClick="onClick"
+                android:text="@string/chd" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_keyboard_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/et_input_filed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:layout_margin="5dp"
+            android:layout_marginTop="55dp"
+            android:inputType="text"
+            android:maxLines="1"/>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
