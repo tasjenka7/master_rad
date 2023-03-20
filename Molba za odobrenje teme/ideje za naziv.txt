@@ -1,0 +1,4 @@
+Daljinsko upravljanje Android set-top-box uređajem uz kontrolu glasom
+Implementacija daljinskog upravljača za Android set-top-box uređaj
+Implementacija kontrole Android set-top-box uređaja
+Implementacija daljinskog upravljanja Android set-top-box uz mogućnost glasovnih komandi
