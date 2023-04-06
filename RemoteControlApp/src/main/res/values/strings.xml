@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Daljinski za digitalnu televiziju</string>
+
+
+    <string name="power">power</string>
+    <string name="guide">guide</string>
+    <string name="all_channels">all channels</string>
+    <string name="movie">movie</string>
+    <string name="live_tv">live tv</string>
+    <string name="live">live</string>
+    <string name="home">home</string>
+    <string name="voice_input">voice input</string>
+    <string name="ok">OK</string>
+    <string name="chd">CH-</string>
+    <string name="chu">CH+</string>
+    <string name="vold">VOL -</string>
+    <string name="volu">VOL +</string>
+
+    <string name="right">right</string>
+    <string name="left">left</string>
+    <string name="up">up</string>
+    <string name="down">down</string>
+    <string name="mute">mute</string>
+    <string name="mic">mic</string>
+    <string name="back">back</string>
+
+    <string name="enter_received_code">Enter code you see on screen</string>
+    <string name="pairing_core">Pairing code</string>
+    <string name="send_code">Send code</string>
+    <string name="keyboard">keyboard</string>
+
+    <string name="zero">0</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+</resources>
