@@ -1,5 +1,6 @@
 package com.example.remotecontrolapp.controller;
 
+import static android.content.Context.MODE_PRIVATE;
 import static android.view.KeyEvent.KEYCODE_0;
 import static android.view.KeyEvent.KEYCODE_1;
 import static android.view.KeyEvent.KEYCODE_2;
@@ -27,10 +28,12 @@ import static android.view.KeyEvent.KEYCODE_VOLUME_DOWN;
 import static android.view.KeyEvent.KEYCODE_VOLUME_MUTE;
 import static android.view.KeyEvent.KEYCODE_VOLUME_UP;
 
+import android.content.SharedPreferences;
 import android.net.nsd.NsdServiceInfo;
 import android.util.Log;
 
 import com.example.remotecontrolapp.Constants;
+import com.example.remotecontrolapp.Singleton;
 
 public class CommandsHandler {
 
@@ -69,16 +72,19 @@ public class CommandsHandler {
 
     /* ----------------- Commands -------------------- */
 
-    public void disconnect(){
-        getClient().disconnect();
+    public void disconnect() {
+        SharedPreferences preferences = Singleton.getContext().getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove(Constants.kSAVED_SERVER);
+        editor.apply();
     }
 
-    public void onPowerClicked(){
+    public void onPowerClicked() {
         Log.d(TAG, "[onPowerClicked]: " + Constants.COMMAND_POWER);
         getClient().send(String.valueOf(KEYCODE_POWER));
     }
 
-    public void onNumberClicked(int number){
+    public void onNumberClicked(int number) {
         switch (number) {
             case Constants.ONE: {
                 Log.d(TAG, "[onNumberClicked] " + number + " " + Constants.COMMAND_ONE);
@@ -86,7 +92,7 @@ public class CommandsHandler {
                 break;
             }
             case Constants.TWO: {
-                Log.d(TAG, "[onNumberClicked] " + number + " " +Constants.COMMAND_TWO);
+                Log.d(TAG, "[onNumberClicked] " + number + " " + Constants.COMMAND_TWO);
                 getClient().send(String.valueOf(KEYCODE_2));
                 break;
             }
@@ -138,12 +144,12 @@ public class CommandsHandler {
         getClient().send(String.valueOf(KEYCODE_GUIDE));
     }
 
-    public void onMovieButtonClicked(){
+    public void onMovieButtonClicked() {
         Log.d(TAG, "[onMovieButtonClicked] " + Constants.COMMAND_MOVIE);
         getClient().send(String.valueOf(Constants.OPEN_VOD_SCENE));
     }
 
-    public void onLiveTvClicked(){
+    public void onLiveTvClicked() {
         Log.d(TAG, "[onLiveTvClicked] " + Constants.COMMAND_LIVETV);
         getClient().send(String.valueOf(KEYCODE_TV));
     }
@@ -154,29 +160,28 @@ public class CommandsHandler {
         getClient().send(String.valueOf(KEYCODE_HOME));
     }
 
-    public void onVolumeDownClicked(){
+    public void onVolumeDownClicked() {
         Log.d(TAG, "[onVolumeDownClicked] " + Constants.COMMAND_VOLUME_DOWN);
         getClient().send(String.valueOf(KEYCODE_VOLUME_DOWN));
     }
 
 
-    public void onVolumeMuteClicked(){
+    public void onVolumeMuteClicked() {
         Log.d(TAG, "[onVolumeMuteClicked] " + Constants.COMMAND_VOLUME_MUTE);
         getClient().send(String.valueOf(KEYCODE_VOLUME_MUTE));
     }
 
 
-    public void onVolumeUpClicked(){
+    public void onVolumeUpClicked() {
         Log.d(TAG, "[onVolumeUpClicked] " + Constants.COMMAND_VOLUME_UP);
         getClient().send(String.valueOf(KEYCODE_VOLUME_UP));
     }
 
 
-    public void onChannelDownClicked(){
+    public void onChannelDownClicked() {
         Log.d(TAG, "[onChannelDownClicked] " + Constants.COMMAND_CHANNEL_DOWN);
         getClient().send(String.valueOf(KEYCODE_CHANNEL_DOWN));
     }
-
 
 
     public void onChannelUpClicked() {
@@ -202,7 +207,7 @@ public class CommandsHandler {
         getClient().send(String.valueOf(KEYCODE_DPAD_DOWN));
     }
 
-        public void onDpadRightClicked() {
+    public void onDpadRightClicked() {
         Log.d(TAG, "[onDpadRightClicked] " + Constants.COMMAND_RIGHT);
         getClient().send(String.valueOf(KEYCODE_DPAD_RIGHT));
     }
@@ -230,7 +235,6 @@ public class CommandsHandler {
 
     public void onServerCommandReceived(String msg) {
     }
-
 
 
 }

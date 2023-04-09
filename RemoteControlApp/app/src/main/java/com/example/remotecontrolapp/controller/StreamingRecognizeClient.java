@@ -206,13 +206,11 @@ public class StreamingRecognizeClient implements StreamObserver<StreamingRecogni
                 Log.d(checkedTag, "Channel down said");
             }else{
                 Log.d(checkedTag, "not recognizable command");
-
             }
+
         }else{
             Log.d(checkedTag, "Nothing said");
-
         }
 
     }
-
 }

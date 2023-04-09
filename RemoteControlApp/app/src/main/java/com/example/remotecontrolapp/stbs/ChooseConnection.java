@@ -105,7 +105,6 @@ public class ChooseConnection extends AppCompatActivity {
 
         vibrator = (Vibrator) getSystemService(RemoteView.VIBRATOR_SERVICE);
         stbs.setAdapter(cAdapter);
-        loadDevice();
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
 
@@ -113,6 +112,7 @@ public class ChooseConnection extends AppCompatActivity {
                 showMessageOkCancel((dialogInterface, i) -> requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 123));
             }
         }
+        loadDevice();
 //        openRemoteView();
     }
 
@@ -165,7 +165,7 @@ public class ChooseConnection extends AppCompatActivity {
         items = new ArrayList<>();
 
         Log.d(TAG, "[loadDevice] before getting StbList");
-        new CountDownTimer(30000, 1000) {
+        new CountDownTimer(15000, 1000) {
             public void onTick(long millisUntilFinished) {
                 try {
                     Singleton.getInstance().getDiscoveryHandler().getStbList(new AsyncDataReceiver() {
@@ -210,6 +210,7 @@ public class ChooseConnection extends AppCompatActivity {
         Intent intent = new Intent(ChooseConnection.this, RemoteView.class);
         startActivity(intent);
         enterCodeContainer.setVisibility(View.GONE);
+        finish();
     }
 
 
@@ -311,4 +312,5 @@ public class ChooseConnection extends AppCompatActivity {
         }
         super.onDestroy();
     }
+
 }

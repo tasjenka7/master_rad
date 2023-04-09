@@ -1,7 +1,5 @@
 package com.example.remotecontrolapp.controller;
 
-import static com.example.remotecontrolapp.R.color.gray;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,6 +8,7 @@ import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.speech.RecognizerIntent;
 import android.util.Log;
@@ -96,9 +95,12 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
 
         if (PackageManager.PERMISSION_DENIED == ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)) {
             ImageButton mic = findViewById(R.id.micBtn);
+            ImageButton micOrig = findViewById(R.id.micBtnOriginal);
             mic.setEnabled(false);
+            micOrig.setEnabled(false);
             //TODO: Make button gray
-            mic.setBackgroundColor(gray);
+            mic.setImageResource(R.drawable.ic_baseline_mic_off_32);
+            micOrig.setImageResource(R.drawable.ic_baseline_mic_off_32);
         }
 
         mAudioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,
@@ -298,16 +300,30 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
 
     public void onMicClicked() {
 
-        if (mIsRecording) {
-            mIsRecording = false;
-            mAudioRecord.stop();
-            mStreamingClient.finish();
-        } else {
-            if (mAudioRecord.getState() == AudioRecord.STATE_INITIALIZED) {
-                startRecording();
-            } else {
-                Log.i(TAG, "[onMicClicked]: AudioRecord mot initialized.");
+        CountDownTimer timer = new CountDownTimer(5000, 1000) {
+            public void onTick(long millisUntilFinished) {
             }
+
+            public void onFinish() {
+                mAudioRecord.stop();
+                mStreamingClient.finish();
+                mIsRecording = false;
+                findViewById(R.id.micBtn).setEnabled(true);
+                setToastEnd();
+            }
+        };
+
+        if(mIsRecording){
+            timer.cancel();
+        }
+
+        if (mAudioRecord.getState() == AudioRecord.STATE_INITIALIZED) {
+            timer.start();
+            startRecording();
+            findViewById(R.id.micBtn).setEnabled(false);
+            Toast.makeText(this, "Snimanje u toku.", Toast.LENGTH_SHORT).show();
+        } else {
+            Log.i(TAG, "[onMicClicked]: AudioRecord mot initialized.");
         }
 
     }
@@ -346,52 +362,57 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
             }
         }
     }
+
+    private void setToastEnd(){
+        Toast.makeText(this, "Snimanje gotovo.", Toast.LENGTH_SHORT).show();
+    }
+
     public ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
-            if(result != null && result.getResultCode() == RESULT_OK){
+            if (result != null && result.getResultCode() == RESULT_OK) {
                 String recordedData = result.getData().getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0);
-                if(recordedData!= null){
-                    if(Constants.vpower.contains(recordedData)){
+                if (recordedData != null) {
+                    if (Constants.vpower.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onPowerClicked();
                         Log.d("STT", "Power said");
-                    } else if(Constants.vguide.contains(recordedData)){
+                    } else if (Constants.vguide.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onGuideClicked();
                         Log.d("STT", "Guide said");
-                    }else if(Constants.vmovie.contains(recordedData)){
+                    } else if (Constants.vmovie.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onMovieButtonClicked();
                         Log.d("STT", "Movie said");
-                    }else if(Constants.vlive.contains(recordedData)) {
+                    } else if (Constants.vlive.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onLiveTvClicked();
                         Log.d("STT", "live said");
-                    }else if(Constants.vok.contains(recordedData)) {
+                    } else if (Constants.vok.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onDpadOkClicked();
                         Log.d("STT", "Ok said");
-                    }else if(Constants.vback.contains(recordedData)) {
+                    } else if (Constants.vback.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onBackClicked();
                         Log.d("STT", "Back said");
-                    }else if(Constants.vhome.contains(recordedData)) {
+                    } else if (Constants.vhome.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onHomeClicked();
                         Log.d("STT", "Home said");
-                    }else if(Constants.vvolup.contains(recordedData)) {
+                    } else if (Constants.vvolup.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onVolumeUpClicked();
                         Log.d("STT", "Vol up said");
-                    }else if(Constants.vvoldown.contains(recordedData)) {
+                    } else if (Constants.vvoldown.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onVolumeDownClicked();
                         Log.d("STT", "Vol down said");
-                    }else if(Constants.vmute.contains(recordedData)) {
+                    } else if (Constants.vmute.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onVolumeMuteClicked();
                         Log.d("STT", "Mute said");
-                    }else if(Constants.vchup.contains(recordedData)) {
+                    } else if (Constants.vchup.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onChannelUpClicked();
                         Log.d("STT", "Channel up said");
-                    }else if(Constants.vchdown.contains(recordedData)) {
+                    } else if (Constants.vchdown.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onChannelDownClicked();
                         Log.d("STT", "Channel down said");
-                    }else{
+                    } else {
                         Log.d("STT", "Not recognized or not supported command");
                     }
-                }else{
+                } else {
                     Log.d("STT", "Nothing said");
                 }
 
@@ -399,16 +420,15 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
         }
     });
 
-    public void onMicOriginalClicked(){
+    public void onMicOriginalClicked() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Say command. Numbers not supported.");
 
-        if(intent.resolveActivity(Singleton.getContext().getPackageManager()) != null){
+        if (intent.resolveActivity(Singleton.getContext().getPackageManager()) != null) {
             startForResult.launch(intent);
-        }else{
+        } else {
             Toast.makeText(Singleton.getContext(), "Your device doesn't support speech input", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
