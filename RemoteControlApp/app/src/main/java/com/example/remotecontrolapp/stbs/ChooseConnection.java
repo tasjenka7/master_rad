@@ -56,6 +56,7 @@ public class ChooseConnection extends AppCompatActivity {
     private String selectedHostAddress; // server selected from list
     private boolean shouldLoadDevices = false;
     private ChooseAdapter cAdapter;
+    private boolean firstTimePermissionCheck = false;
 
     //Constructor
     public ChooseConnection() {
@@ -110,10 +111,25 @@ public class ChooseConnection extends AppCompatActivity {
 
             if (!shouldShowRequestPermissionRationale(Manifest.permission.RECORD_AUDIO)) {
                 showMessageOkCancel((dialogInterface, i) -> requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 123));
+                firstTimePermissionCheck = true;
+
             }
+
         }
-        loadDevice();
-//        openRemoteView();
+        if(firstTimePermissionCheck){
+            new CountDownTimer(10000, 1000) {
+                public void onTick(long millisUntilFinished) {}
+
+                public void onFinish() {
+                    loadDevice();
+                    firstTimePermissionCheck = false;
+                }
+            }.start();
+        }else{
+            loadDevice();
+        }
+
+
     }
 
     private void showMessageOkCancel(DialogInterface.OnClickListener okListener) {

@@ -168,6 +168,7 @@ public class StreamingRecognizeClient implements StreamObserver<StreamingRecogni
         String checkedTag = "SRC [checkSaid]";
 
         if(recordedData!= null){
+            recordedData = recordedData.toLowerCase();
             if(Constants.vpower.contains(recordedData)){
                 Singleton.getInstance().getCommandsHandler().onPowerClicked();
                 Log.d(checkedTag, "Power said");

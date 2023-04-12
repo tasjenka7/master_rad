@@ -98,7 +98,6 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
             ImageButton micOrig = findViewById(R.id.micBtnOriginal);
             mic.setEnabled(false);
             micOrig.setEnabled(false);
-            //TODO: Make button gray
             mic.setImageResource(R.drawable.ic_baseline_mic_off_32);
             micOrig.setImageResource(R.drawable.ic_baseline_mic_off_32);
         }
@@ -373,6 +372,7 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
             if (result != null && result.getResultCode() == RESULT_OK) {
                 String recordedData = result.getData().getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0);
                 if (recordedData != null) {
+                    recordedData = recordedData.toLowerCase();
                     if (Constants.vpower.contains(recordedData)) {
                         Singleton.getInstance().getCommandsHandler().onPowerClicked();
                         Log.d("STT", "Power said");
