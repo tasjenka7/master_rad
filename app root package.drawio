@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" modified="2023-05-23T18:58:47.208Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="NxERLVKJFDWt6nhm6yQK" version="21.3.2" type="device">
+  <diagram name="Page-1" id="nDndCxQJWL_P8zzZan5N">
+    <mxGraphModel dx="1050" dy="549" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&amp;lt;interface&amp;gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AsyncDataReceiver&amp;lt;T&amp;gt;&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ onReceive(var: T): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ onFailer(var: T): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="410" y="220" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&amp;lt;interface&amp;gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AsyncReceiver&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ onReceive(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ onFailer(error: String): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="110" y="220" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&amp;lt;interface&amp;gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;OnItemClickedListener&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ onItemClicked(position: int): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="110" y="380" width="210" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&amp;lt;class&amp;gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Singleton&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- &lt;u&gt;context&lt;/u&gt;: Context&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- &lt;u&gt;instance&lt;/u&gt;: Singleton&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- discoveryHandler: DiscoveryHandler&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- commandsHandler: CommandsHandler&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ &lt;u&gt;getContext&lt;/u&gt;(): Context&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ &lt;u&gt;getInstance&lt;/u&gt;(): Singleton&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getDiscoveryHandler(): DiscoveryHandler&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getCommandsHandler(): CommandsHandler&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ onCreate(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ onLowMemory(): void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;# finalize(): void&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="490" y="400" width="280" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-6" value="" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=100;tabHeight=30;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="505" y="730" width="250" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-7" value="android" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="515" y="730" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-8" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&amp;lt;class&amp;gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Application&lt;/b&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="550" y="790" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-9" value="" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=100;tabHeight=30;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="110" y="530" width="250" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-10" value="com.example.remotecontrolapp.controller" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="195" y="564" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&amp;lt;class&amp;gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;CommandsHandler&lt;/b&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="155" y="600" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-12" value="" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=100;tabHeight=30;tabPosition=left;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="110" y="730" width="250" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-13" value="com.example.remotecontrolapp.stbs" style="text;align=center;fontStyle=1;verticalAlign=middle;spacingLeft=3;spacingRight=3;strokeColor=none;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="1">
+          <mxGeometry x="195" y="764" width="80" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-14" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&amp;lt;class&amp;gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;DiscoveryHandler&lt;/b&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="155" y="800" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-15" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="P4lQ85JaV9uqgHRSdKBN-5" target="P4lQ85JaV9uqgHRSdKBN-8">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="690" y="660" as="sourcePoint" />
+            <mxPoint x="850" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-16" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="P4lQ85JaV9uqgHRSdKBN-5" target="P4lQ85JaV9uqgHRSdKBN-14">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="690" y="660" as="sourcePoint" />
+            <mxPoint x="850" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P4lQ85JaV9uqgHRSdKBN-17" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="P4lQ85JaV9uqgHRSdKBN-5" target="P4lQ85JaV9uqgHRSdKBN-11">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="690" y="660" as="sourcePoint" />
+            <mxPoint x="850" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
