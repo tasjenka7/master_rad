@@ -1,0 +1,52 @@
+\documentclass[struktura.tex]{subfiles}
+\usepackage{subfiles}
+\documentclass[12pt,oneside]{memoir} 
+\usepackage[latinica]{matfmaster} 
+
+% --------
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{listingsutf8}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,      
+    inputencoding=utf8,
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+%----------- 
+
+
+\begin{document}
+Za pretragu uređaja koji se nalaze na istoj mreži koristi se klase iz paketa \verb|android.net.nsd|. Otkrivanje mrežnih servisa (eng. \textit{Network Service Discovery (NSD)}) \cite{sajt:nsd} obezbeđuje klase koje pružaju usluge pronalaska svih servisa koje pružaju uređaji na lokalnoj mreži. Potrebno je kreirati jednu klasu u kojoj će se koristiti mogućnosti za otkrivanje koje pruža ova biblioteka i koja je nazvana \textit{NsdDiscover}. Pored ove klase potrebno je napraviti klasu \textit{DiscoveryHandler} koja koristi prethodno kreirane metode u svrhu upravljanja pretragom i rezultatima.
+
+Unutar klase \textit{NsdDiscover} se inicijalizuju osluškivač pretrage (eng. \textit{discovery listener}) i osluškivač rezultata (eng. \textit{resolve listener}). Oba predstavljaju instance klasa iz menadžera za otkrivanje mrežnih servisa (eng. \textit{NsdManager}) i imaju svoje predefinisane metode koje je potrebno prepisati. U listingu \ref{lst:nsd_listeners} su prikazani koraci za inicijalizaciju ova dva osluškivača. 
+
+\lstinputlisting[language=Java, caption= {Inicijalizacija osluškivača pretrage i rezultata}, label = {lst:nsd_listeners}]{kodovi/NsdListeners.java}
+
+Potrebno je definisati i jednu funkciju povratnog poziva (eng. \textit{callback}) \verb|public void onDiscover(NsdServiceInfo service){}| koja će biti prepisana u klasi \textit{DiscoveryHandler} prilikom kreiranja instance klase \textit{NsdDiscover}. Klasa \textit{DiscoveryHandler} je kreirana da bi pružila logiku koja će se izvršavati za pretragu. Ovo je prikazano u listingu \ref{lst:discovery_handler} putem definicije funckije koja kreira listu \textbf{stb} uredjaja \verb|getStbList|.
+
+\lstinputlisting[language=Java, caption= {Metod klase DiscoveryHandler za pretragu uređaja}, label = {lst:discovery_handler}]{kodovi/DiscoveryHandler.java}
+
+\end{document}
