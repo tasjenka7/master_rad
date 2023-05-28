@@ -45,7 +45,7 @@ Unutar klase \textit{NsdDiscover} se inicijalizuju osluškivač pretrage (eng. \
 
 \lstinputlisting[language=Java, caption= {Inicijalizacija osluškivača pretrage i rezultata}, label = {lst:nsd_listeners}]{kodovi/NsdListeners.java}
 
-Potrebno je definisati i jednu funkciju povratnog poziva (eng. \textit{callback}) \verb|public void onDiscover(NsdServiceInfo service){}| koja će biti prepisana u klasi \textit{DiscoveryHandler} prilikom kreiranja instance klase \textit{NsdDiscover}. Klasa \textit{DiscoveryHandler} je kreirana da bi pružila logiku koja će se izvršavati za pretragu. Ovo je prikazano u listingu \ref{lst:discovery_handler} putem definicije funckije koja kreira listu \textbf{stb} uredjaja \verb|getStbList|.
+Potrebno je definisati i jednu funkciju povratnog poziva (eng. \textit{callback}) \verb|public void onDiscover(NsdServiceInfo service){}| koja će biti prepisana u klasi \textit{DiscoveryHandler} prilikom kreiranja instance klase \textit{NsdDiscover}. Klasa \textit{DiscoveryHandler} je kreirana da bi pružila logiku koja će se izvršavati za pretragu. Ovo je prikazano u listingu \ref{lst:discovery_handler} putem definicije funckije koja kreira listu STB uređaja \verb|getStbList|.
 
 \lstinputlisting[language=Java, caption= {Metod klase DiscoveryHandler za pretragu uređaja}, label = {lst:discovery_handler}]{kodovi/DiscoveryHandler.java}
 

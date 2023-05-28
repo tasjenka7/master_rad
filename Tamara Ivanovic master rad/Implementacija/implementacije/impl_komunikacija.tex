@@ -39,11 +39,11 @@
 
 
 \begin{document}
-Komunikacija aplikacije sa \textbf{stb} uređajem je implementirana putem UDP protokola kao što je prikazano u prethodnom poglavlju. Za slanje komandi implementirana je funkcija \verb|send(String message)| koja kreira novu nit u kojoj bajtove poruke pakuje u jedan \textit{DatagramPacket}\cite{sajt:datagram} i preko soketa šalje povezanom uređaju. Preduslov da ova funckija radi je da je soket povezan, odnosno da je komunikacija ostvarena za zadatu mrežu i port. Implementacija funkcije je zadata u listingu \ref{lst:send}.
+Komunikacija aplikacije sa STB uređajem je implementirana putem UDP protokola kao što je prikazano u prethodnom poglavlju. Za slanje komandi implementirana je funkcija \verb|send(String message)| koja kreira novu nit u kojoj bajtove poruke pakuje u jedan \textit{DatagramPacket}\cite{sajt:datagram} i preko soketa šalje povezanom uređaju. Preduslov da ova funckija radi je da je soket povezan, odnosno da je komunikacija ostvarena za zadatu mrežu i port. Implementacija funkcije je zadata u listingu \ref{lst:send}.
 
 \lstinputlisting[language=Java, caption= {Funkcija za slanje komandi preko UDP protokola}, label = {lst:send}]{kodovi/SendCommand.java}
 
-Poruka koja se šalje predstavlja konstantu za klik dugmeta na daljinskom uprvaljaču. U Androidu događaj tastature (eng. Key Event) je događaj kada korisnik pritisne taster na tastaturi ili nekom od podržanih uređaja. Svaki od tastera ima svoju numeričku vrednost, odnosno k\^{o}d tastature (eng. Key Code). Oni zajedno olakšavaju interakciju sa uređajima koji koriste neki od podržanih uređaja. Nije potrebno znati vrednosti ovih konstanti napamet jer im se može pristupiti uključivanjem paketa \verb|android.view.KeyEvent|. 
+Poruka koja se šalje predstavlja konstantu za klik dugmeta na daljinskom uprvaljaču. U Androidu događaj tastature (eng. \textit{Key Event}) je događaj kada korisnik pritisne taster na tastaturi ili nekom od podržanih uređaja. Svaki od tastera ima svoju numeričku vrednost, odnosno k\^{o}d tastature (eng.\textit{ Key Code}). Oni zajedno olakšavaju interakciju sa uređajima koji koriste neki od podržanih uređaja. Nije potrebno znati vrednosti ovih konstanti napamet jer im se može pristupiti uključivanjem paketa \verb|android.view.KeyEvent|. 
 
 Može se napraviti klasa koja upravlja komandama sa imenom \textit{CommandsHandler}. I u njoj implementirati funkciju za svako dugme koje je moguće pritisnuti. Kada se u glavnoj klasi pritisne dugme na primer za odlazak na početni ekran potrebno je pozvati funkciju na sledeći način: 
 
