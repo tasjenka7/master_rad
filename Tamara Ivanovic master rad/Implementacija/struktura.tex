@@ -4,7 +4,7 @@
 \usepackage[latinica]{matfmaster} 
 
 \begin{document}
-Kod svake Android aplikacije je prvo podeljen u dva direktorijuma: \textbf{app} i \textbf{src}. Osnovnu strukturu \textbf{app} direktorijuma bilo koje Android aplikacije čine poddirektorijumi: 
+K\^{o}d svake Android aplikacije je podeljen u dva direktorijuma: \textbf{app} i \textbf{src}. Osnovnu strukturu \textbf{app} direktorijuma bilo koje Android aplikacije čine poddirektorijumi: 
 
 \begin{itemize}
 \item \textit{build} sa izvršnom verzijom koda,
@@ -12,7 +12,7 @@ Kod svake Android aplikacije je prvo podeljen u dva direktorijuma: \textbf{app} 
 \item \textit{src} sa izvornim kodom.
 \end{itemize}
 
- Direktorijum \textbf{src} se uglavnom sastoji od sledečih poddiretkorijuma: 
+ Direktorijum \textbf{src} se uglavnom sastoji od sledećih poddiretkorijuma: 
 \begin{itemize}
 \item \textit{AndroidTest} u kom se smeštaju svi testovi koje je potrebno pokrenuti na Android uređaju, 
 \item \textit{test} u kom se smeštaju svi testovi za testiranje jedinica koda (eng. \textit{unit tests})
@@ -21,27 +21,27 @@ Kod svake Android aplikacije je prvo podeljen u dva direktorijuma: \textbf{app} 
 
 Projekat implementacije upravljača za digitalnu televiziju je smešten u direktorijumu pod nazivom \textit{RemoteControlApp}. Srž aplikacije se nalazi u \textbf{main} poddirektorijumu, a za ovu aplikaciju ovaj direktorijum ima sledeću strukturu:
 \begin{itemize}
-\item \textit{AndroidMainifest.xml} - datoteka koji opisuje glavne postavke aplikacije,
-\item \textit{res} - direktorijum sa svim XML datotekama koje čine korisnički interfejs (eng. \textit{user interface}) aplikacije,
-\item \textit{java} - direktorijum sa svim klasama i interfejsima aplikacije
-\item \textit{proto} - direktorijum sa \textit{.proto} datotekama koje su neophodne za korišćenje \textit{Google Cloud API}-ja.
+\item \textit{AndroidMainifest.xml} --- datoteka koji opisuje glavne postavke aplikacije,
+\item \textit{res} --- direktorijum sa svim XML datotekama koje čine korisnički interfejs (eng. \textit{user interface}) aplikacije,
+\item \textit{java} --- direktorijum sa svim klasama i interfejsima aplikacije
+\item \textit{proto} --- direktorijum sa \textit{.proto} datotekama koje su neophodne za korišćenje \textit{Google Cloud API}-ja.
 \end{itemize}
 
 \section{Upravljanje procesom izdgradnje i određivanje zavisnosti aplikacije}
 
-Važne datoteke pri postavljanju projekta su \textbf{\textit{build.gradle}} datoteke koje služe da  upravljaju procesom izgradnje i odrede zavisnosti (eng. \textit{dependency}) aplikacije. Ove datoteke se generišu automatski pri kreiranju projekta, ali je moguće dodati sve dodatne zavisnosti koje budu potrebne. Postoje dva tipa ovih datoteka - na nivou projekta i na nivou modula. Datoteku na nivou projekta čini skup pravila koji koji važi za ceo projekat, dok datoteke na nivou modula čine pravila za modul u kom se nalazi datoteka. Svaka ova datoteka se sastoji od vise blokova koji grupišu unutar sebe pravila, odnosno opcije koje se primenjuju.
+Važne datoteke pri postavljanju projekta su \textbf{\textit{build.gradle}} datoteke koje služe da  upravljaju procesom izgradnje i odrede zavisnosti (eng. \textit{dependency}) aplikacije. Ove datoteke se generišu automatski pri kreiranju projekta, ali je moguće dodati sve dodatne zavisnosti koje budu potrebne. Postoje dva tipa ovih datoteka --- na nivou projekta i na nivou modula. Datoteku na nivou projekta čini skup pravila koji važi za ceo projekat, dok datoteke na nivou modula čine pravila za modul u kom se nalazi datoteka. Svaka ova datoteka se sastoji od vise blokova koji grupišu unutar sebe pravila, odnosno opcije koje se primenjuju.
 
-Za ovu aplikaciju bitno je u blok \textit{plugins} dodati dodatak za obradu \textit{Protobuf} datoteka \verb|id 'com.google.protobuf'|. Takođe unutar bloka \textit{protobuf} se dodaju opcije za korišćenje protobuf-a. Tačne zavisnosti koje je potrebno dodati biće navedene prilikom implementacije glasovnih komandi. 
+Za uspešno korišćenje \textit{Google Cloud} servisa u aplikaciji, neophodno je uvesti podršku za obradu \textit{Protobuf} (skraćeno od eng. \textit{Protocol Buffers}) datoteka. \textit{Protobuf} je interfejs za definiciju jezika (eng. \textit{Interface Definition Language}, skraćeno IDL) koji definiše strukturu podataka i programski interfejs. \cite{sajt:protobuf} Omogućava usaglašeost pri deljenju struktuiranih podataka između različitih sistemskih platformi i jezika programiranja. Neophodno je unutar bloka \textit{plugins} dodati dodatak \verb|id 'com.google.protobuf'| kako bi se obezbedila adekvatna podrška. Takođe u okviru bloka \textit{protobuf}, se dodaju opcije za korišćenje protobuf-a. Tačne zavisnosti koje je potrebno dodati biće navedene kod opisa implementacije glasovnih komandi gde će biti i objašnjena povezanost \textit{Google cloud} servisa i \textit{protobuf}-a.
 
 \section{Potrebne dozvole i informacije za pokretanje aplikacije}
 
-Informacije potrebne za pokretanje i instalaciju aplikacije čine datoteku \textit{AndroidManifest.xml}. U ovoj datoteci su definisane sve dozvole koje su potrebne da budu dozvoljene na uređaju sa kog se pokreće aplikacija: pristup internetu, wifi stanju, stanju telefona, vibracija i  snimanje audio sadržaja. Pregled ovih dozvola je dat u listingu \ref{lst:manifestApp}. U okviru etiketa (eng. \textit{tag}) koji definiše aplikaciju su postavljene vrednosti naziva aplikacije, slika kojom je aplikacija predstavljena, ciljani API nivo kao i dve aktivnosti koje se pojavljuju. Prva aktivnost je \textit{ChooseConnection}, koja je odabir uređaja sa kojim će se korisnik povezati i ona je obeležena kao glavna aktivnost. Druga aktivnost je \textit{RemoteView} koja čini prikaz daljinskog upravljača. 
+Informacije potrebne za pokretanje i instalaciju aplikacije čine datoteku \textit{AndroidManifest.xml}. U ovoj datoteci su definisane sve dozvole koje aplikacija zahteva od uređaja sa kog se pokreće aplikacija: pristup internetu, stanju bežične mreže (eng. \textit{WiFi}), stanju telefona, vibracija i  snimanje audio sadržaja. Pregled ovih dozvola je dat u listingu \ref{lst:manifestApp}. Kao što je navedeno u delu \ref{sec:manifest} glavna etiketa koja mora postojati je za aplikaciju i u okviru nje su postavljene vrednosti naziva aplikacije, slika kojom je aplikacija predstavljena, ciljani API nivo kao i dve aktivnosti koje se pojavljuju. Prva aktivnost je \textit{ChooseConnection}, koja je odabir uređaja sa kojim će se korisnik povezati i ona je obeležena kao glavna aktivnost. Druga aktivnost je \textit{RemoteView} koja čini prikaz daljinskog upravljača. 
 
 \lstinputlisting[language=XML, caption= {Odobrenja definisana u datoteci \textit{AndroidManifest.xml}}, label={lst:manifestApp}]{implementacije/kodovi/AppManifest.xml}
 
 
 \section{Resursi aplikacije}
-Direktorijum u kom se smeštaju svi resursi aplikacije se naziva \textit{res}. Resursi koji se mogu čuvati su slike, planovi (eng. layout), stringovi, stilovi itd. Moguće je čuvati iste resurse u različitim dimenzijama kako bi u zavisnosti od dimenzija i podešavanja uređaja bile odabrane adekvatne dimenzije. Direktorijum \textit{drawable} skladišti slike. Za potrebe projekta formirane su i sačuvane slike za strelicu koja je predstavljena trouglom, ovalno dugme i dugme za prekid konekcije. 
+Direktorijum u kom se smeštaju svi resursi aplikacije se naziva \textit{res}. Resursi koji se mogu čuvati su slike, planovi (eng. \textit{layout}), stringovi, stilovi itd. Moguće je čuvati iste resurse u različitim dimenzijama kako bi u zavisnosti od dimenzija i podešavanja uređaja bili odabrani odgovarajući resursi. Direktorijum \textit{drawable} skladišti slike. Za potrebe projekta formirane su i sačuvane slike za strelicu koja je predstavljena trouglom, ovalno dugme i dugme za prekid konekcije. 
 
 Vrednosti, boje i dimenzije za različite resurse se skladište u direktorijumu \textit{values}. Datoteka \textit{colors.xml} sadrži boje korišćene za kreiranje interfejsa. Stringovi potrebni za dizajn korisničkog interfejsa su sačuvani u \textit{strings.xml}. Kolor shema, odnosno tema aplikacije je definisana u \textit{themes/themes.xml} odakle se može uočiti da boje koje se koriste za korisnički interfejs su nijanse plave boje. 
 
