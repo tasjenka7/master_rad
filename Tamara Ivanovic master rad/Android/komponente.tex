@@ -50,13 +50,14 @@ Kreiranje Android aplikacija ne bi bilo moguće bez njenih osnovnih komponenti. 
 \subsection{Aktivnosti}
 Aktivnosti predstavljaju jedan prikaz grafičkog korisničkog interfejsa (eng. \textit{Graphical User Interface}) na ekranu. Ne postoji ograničeni broj aktivnosti koje jedna aplikacija može imati, takođe moguće je da postoje aplikacije bez aktivnosti. Za razliku od mnogih programskih jezika gde pokretanje aplikacije počinje pozivom metoda \textit{main()} i uvek od istog mesta, Android aplikacije ne moraju uvek započinjati na istom mestu. Uglavnom Android aplikacije imaju jedan početni ekran koji se naziva \textit{Main Activity} i  koji se pokreće pri pokretanju aplikacije i više dodatnih koji su logički povezani sa početnim. Logika iza koje stoji ovaj koncept je da je korisniku omogućeno da pokrene različite delove aplikacije u zavisnosti od trenutnih potreba. Jedan primer koji ovo ilustruje je kada korisnik klikne na obaveštenje aplikacije za dostavu hrane da je hrana koju je naručio u putu, aplikacija će otvoriti aktivnost koja prikazuje mapu za praćenje, a ne početnu stranu za izbor restorana.
 
-Pri implementaciji svaka aktivnost mora da ima svoje ime i nasleđuje klasu \textit{Activity}. Samim tim nasleđuje i njene metode koje prate osnovna stanja životnog ciklusa aktivnosti: \textit{onCreate(), onStart(), onPause(), onResume(), onStop(), onDestroy() i onRestart()}\cite{book:and9cookbook}. Četiri stanja su:
+Svaka aktivnost ima četiri osnovna stanja: 
 \begin{enumerate}
     \item Trajanje (eng. \textit{running})
-    \item Mirovanje (eng.\textit{paused})
+    \item Mirovanje (eng. \textit{paused})
     \item Zaustavljeno (eng. \textit{stopped})
     \item Uništeno (eng. \textit{destroyed})
 \end{enumerate}
+Pri implementaciji svaka aktivnost mora da ima svoje ime i da nasleđuje klasu \textit{Activity}. Ova klasa pruža metode koji prate osnovna stanja životnog ciklusa aktivnosti: \textit{onCreate(), onStart(), onPause(), onResume(), onStop(), onDestroy() i onRestart()} \cite{book:and9cookbook}. Ove metode je potrebno prepisati kako bi se definisala ponašanja aktivnosti za svaku promenu njenog stanja. 
 
 Metod \textit{onCreate()} je metod koji mora biti implementiran iz razloga što se u njemu nalazi sva logika koja je potrebna da se izvrši pri prvom pokretanju aktivnosti. U njemu je potrebno uraditi sve inicijalizacije osnovnih komponenti aktivnosti kao i inicijalizaciju statičkih promenljivih, stavljanje podataka u liste... Iz ovog metoda mora se pozvati metod \textit{setContentView()} koji određuje prikaz grafičkog korisničkog interfejsa. Nakon izvršavanja \textit{onCreate() }metoda uvek se poziva \textit{onStart()} metod.
 
@@ -74,13 +75,13 @@ Metod \textit{onRestart() }se poziva nakon što je aktivnost stopirana, a pre nj
 
 \subsection{Servisi}
 Servis je komponenta koja izvršava svoje zadatke u pozadini i najčešće se koriste za zadatke koji se dugo izvršavaju i koji bi usporili aplikaciju ako bi se izvršavali na glavnoj niti. Servisi nemaju grafički korisnički interfejs, ali mogu da komuniciraju sa ostalim komponentama \cite{book:hellman}. U zavisnosti od tipa zadatka koji se očekuje da servis izvrši, kao i dužine trajanja izvršavanja razlikuju se tri vrste servisa:
-\begin{itemize}
-    \item \textit{Pozadinski (eng. background)} - Ovi servisi ne obaveštavaju korisnika ni na koji način o zadacima koje izvršavaju zbog toga što za njihovo izvršavanje nije potrebna nikakva interakcija sa korisnikom. Primer je sinhronizovanje podataka u unapred određeno vreme.  
-    \item \textit{Vidljivi (eng. foreground)} - Ovo su servisi za koje korisnici znaju da se izvršavaju tako što servis pomoću obaveštenja obaveštava korisnika o svom izvršavanju. Korisniku se daje mogućnost da pauzira ili u potpunosti zaustavi proces koji se izvršava. Primer ovog servisa je preuzimanje datoteka.
-    \item \textit{Vezani (eng. bound)} - Ovi servisi se izvršavaju kada je neka komponenta aplikacije povezana sa servisom, odnosno dokle god postoji neka komponenta kojoj je potrebno izvršavanje zadataka koje dati servis izvršava.
-\end{itemize}
+\begin{description}
+    \item \textit{Pozadinski} (eng. \textit{background}) servisi ne obaveštavaju korisnika ni na koji način o zadacima koje izvršavaju zbog toga što za njihovo izvršavanje nije potrebna nikakva interakcija sa korisnikom. Primer je sinhronizovanje podataka u unapred određeno vreme.  
+    \item \textit{Vidljivi} (eng. \textit{foreground}) su servisi za koje korisnici znaju da se izvršavaju tako što servis pomoću obaveštenja obaveštava korisnika o svom izvršavanju. Korisniku se daje mogućnost da pauzira ili u potpunosti zaustavi proces koji se izvršava. Primer ovog servisa je preuzimanje datoteka.
+    \item \textit{Vezani} (eng. \textit{bound}) servisi se izvršavaju kada je neka komponenta aplikacije povezana sa servisom, odnosno dokle god postoji neka komponenta kojoj je potrebno izvršavanje zadataka koje dati servis izvršava.
+\end{description}
 
-Na osnovu životnog ciklusa servisa razlikujemo pokrenute (eng. \textit{started}) servise i povezane (eng. \textit{bounded}). Kod pokrenutih servis se inicijalizuje pozivom \textit{startService() }metode, a zaustavlja kada komponenta pozove metod \textit{stopService() }ili ukoliko sam servis pozove\textit{ stopSelf() }metod. Povezani se mogu doživeti kao klijent-server struktura iz razloga što komponente mogu da šalju zahteve servisu, kao i da dohvataju rezultate. U trenutku kada neka komponenta pozove \textit{bindService()} metod i time se poveže sa servisom servis se smatra povezanim, a tek kada se sve komponente aplikacije koje su bile povezane sa njim oslobode pozivom \textit{unbindService() }servis prestaje sa radom. Svi navedeni metodi su iz klase \textit{Service} koju je neophodno da svaki servis nasledi pri implementaciji.
+Na osnovu životnog ciklusa servisa razlikujemo pokrenute (eng. \textit{started}) servise i povezane (eng. \textit{bounded}). Kod pokrenutih servis se inicijalizuje pozivom \textit{startService() }metode, a zaustavlja kada komponenta pozove metod \textit{stopService() }ili ukoliko sam servis pozove\textit{ stopSelf() }metod. Povezani se mogu doživeti kao klijent-server struktura iz razloga što komponente mogu da šalju zahteve servisu, kao i da dohvataju rezultate. U trenutku kada neka komponenta pozove \textit{bindService()} metod i time se poveže sa servisom servis se smatra povezanim, a tek kada se sve komponente aplikacije koje su bile povezane sa njim oslobode pozivom \textit{unbindService()} servis prestaje sa radom. Svi navedeni metodi su iz klase \textit{Service} koju je neophodno da svaki servis nasledi pri implementaciji.
 
 
 \subsection{Prijemnici}
