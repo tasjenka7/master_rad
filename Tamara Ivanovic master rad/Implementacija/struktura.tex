@@ -63,10 +63,19 @@ Svaki ekran sa kojim se korisnik može susresti mora imati korisnički interfejs
 \end{figure}
 %=====================================================================
 
-% opisati sve ove fajlove koje imam
 
 \section{Struktura direktorijuma java}
-Za funkcionisanje aplikacije neophodno je da se omogući pronalaženje uređaja, a zatim i da se manipuliše sa odabranim uređajem. Kako bi ovo sve radilo ispravno potrebna je međusobna interakcija između klasa, kao i podela koda u adekvatne pakete i klase prema funkcionalnostima koje obezbeđuju. Iz tih razloga unutar glavnog paketa aplikacije k\^{o}d je podeljen u dva paketa. Paket \textbf{stbs} sadrži klase koje se bave pronalaženjem i upravljanjem STB uređajem. Klase koje se bave upravljanjem komandama i komunikacijom sa uređajem su smeštene u paket \textbf{controller}.  Dijagram paketa je prikazan na slici XXXXXXXXXXXX
+Za funkcionisanje aplikacije neophodno je da se omogući pronalaženje uređaja, a zatim i da se manipuliše sa odabranim uređajem. Kako bi ovo sve radilo ispravno potrebna je međusobna interakcija između klasa, kao i podela koda u adekvatne pakete i klase prema funkcionalnostima koje obezbeđuju. Iz tih razloga unutar glavnog paketa aplikacije k\^{o}d je podeljen u dva paketa. Paket \textbf{stbs} sadrži klase koje se bave pronalaženjem i upravljanjem STB uređajem. Klase koje se bave upravljanjem komandama i komunikacijom sa uređajem su smeštene u paket \textbf{controller}.  Dijagram paketa je prikazan na slici \ref{fig:dijagramPaketa}
+
+
+%=================== SLIKA ======================================
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{Implementacija/dijagrami/pakage_diagram.jpg}
+  \caption{Dijagram paketa}
+  \label{fig:dijagramPaketa}
+\end{figure}
+%=====================================================================
 
 Klase unutar paketa \textbf{stbs} su:
 \begin{itemize}
@@ -76,7 +85,17 @@ Klase unutar paketa \textbf{stbs} su:
 \item \textit{NsdDiscover} koja se koristi za korišćenje NSD (eng. \textit{Network Service Discovery}) mehanizma za pronalaženje uređaja i
 \item \textit{Stb} koja predstavlja jedan uređaj i sadrži informacije o njemu.
 \end{itemize}
-Dijagram klasa ovog paketa se može videti na slici XXXXXXXXX.
+Dijagram klasa ovog paketa se može videti na slici \ref{fig:dijagramStbs}.
+
+
+%=================== SLIKA ======================================
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{Implementacija/dijagrami/stbs_pakage_class_diagram.jpg}
+  \caption{Dijagram klasa za paket stbs}
+  \label{fig:dijagramStbs}
+\end{figure}
+%=====================================================================
 
 Klase unutar paketa \textbf{controller} su:
 \begin{itemize}
@@ -85,7 +104,17 @@ Klase unutar paketa \textbf{controller} su:
 \item \textit{UdpClient} koja omogućava komunikaciju putem UDP protokola i
 \item \textit{StreamingRecognizeClient} koje se koristi za obradu audio podataka i prepoznavanje govora pomoću \textit{Google Cloud API}-ja. 
 \end{itemize}
-Komunikacija i izgled ovih klasa su prikazani na dijagramu XXXXXXXXX.
+Komunikacija i izgled ovih klasa su prikazani na dijagramu \ref{fig:dijagramController}.
+
+
+%=================== SLIKA ======================================
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{Implementacija/dijagrami/controller_package_class_diagram.jpg}
+  \caption{Dijagram klasa za paket controller}
+  \label{fig:dijagramController}
+\end{figure}
+%=====================================================================
 
 Pored ovih klasa u glavnom paketu aplikacjie nalaze se sledeće klase i interfejsi:
 \begin{itemize}
@@ -95,7 +124,16 @@ Pored ovih klasa u glavnom paketu aplikacjie nalaze se sledeće klase i interfej
 \item \textit{Singleton} klasa se koristi za implementaciju Singlton (eng. \textit{Singleton}) šablona i
 \item \textit{Constants} klasa koja skladišti sve konstante potrebne u razvoju aplikacije.
 \end{itemize}
-NJihov dijagram klasa je prikazan na slici XXXXXXXXXXX.
+NJihov dijagram klasa je prikazan na slici \ref{fig:dijagramRoot}.
+
+%=================== SLIKA ======================================
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{Implementacija/dijagrami/app_root_package.jpg}
+  \caption{Dijagram klasa za glavni paket aplikacije}
+  \label{fig:dijagramRoot}
+\end{figure}
+%=====================================================================
 
 \section{Implementacija glavnih funkcionalnosti aplikacije}
 Kao što je navedeno u delu \ref{opis_rada} postoje koraci koji su potrebni da se ispune kako bi se aplikacija koristila za upravljanje uređajem za digitalnu televiju. U nastavku će biti prikazani delovi koda i objašnjenja kako implementirati pretragu uređaja na mreži, povezivanje sa odabranim uređajem kao i komunikaciju i slanje komandi na uređaj. Poseban osvrt će biti na implementaciji zadavanja glasovnih komandi. 
@@ -111,10 +149,9 @@ Kao što je navedeno u delu \ref{opis_rada} postoje koraci koji su potrebni da s
 \subfile{implementacije/impl_komunikacija}
 
 
-\subsection{Implementacija zadavanja glasovnih komandi}
-% \subfile{}
+%\subsection{Implementacija zadavanja glasovnih komandi}
+\subfile{implementacije/impl_glas}
 
-\section{Direktorijum proto}
 
 
 

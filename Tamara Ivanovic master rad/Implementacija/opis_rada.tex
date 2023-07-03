@@ -1,8 +1,9 @@
 \documentclass[implementacija.tex]{subfiles}
 \usepackage{subfiles}
 \documentclass[12pt,oneside]{memoir} 
-\usepackage[latinica]{matfmaster} 
-
+\usepackage[latinica]{matfmaster}
+\usepackage{caption}
+\usepackage{subcaption}
 \begin{document}
 
 \subsection{Instalacija}
@@ -17,22 +18,31 @@ Aplikacija započinje pretragu uređaja kao na slici \ref{fig:pretraga}. Kako je
 Svi uređaji koji su pronađeni se ispisuju na ekranu kao na slici \ref{fig:pronadjeni_uredjaji} i moguće je kliknuti na bilo koji od njih. Pritiskom na naziv odgovarajućeg uređaja iskazuje se želja da bude izvršeno uparivanje sa tim uređajem. Na uređaju sa kojim se pokušava uparivanje se prikazuje četvorocifren broj kao na slici \ref{fig:kod_na_stb}. Polje za unos tog broja se prikazuje u aplikaciji kao na slici \ref{fig:polje_za_kod}. Nakon uspešnog unosa prikazaog na slici \ref{fig:kod_na_mobilnom} uređaji se uparuju, a uspešno uparivanje potvrđuje i prikaz daljinskog upravljača. Podržane funkcionalnosti su prikazane na slici  \ref{fig:opis_komandi}.
 
 % ----------------------------------------------------
+% \begin{figure}[h!]
+% \centering
+%     \begin{subfigure}
+%   \centering
+%   \includegraphics[width=9cm,height=9cm,keepaspectratio]{Implementacija/snimci_ekrana/1_obavestenje_za_dozvolu.jpg}
+%   \caption{A obaveštenje o traženju dozvole}
+%     \label{fig:dozvola}
+%     \end{subfigure}%
+%     \begin{subfigure}
+%    \centering
+%   \includegraphics[width=9cm,height=9cm,keepaspectratio]{Implementacija/snimci_ekrana/2_sistemska_dozvola.jpg}
+%   \caption{B prikaz sistemskog obaveštenja}
+%     \label{fig:sistemsko_obavestenje}
+%     \end{subfigure}
+% \caption{Snimak ekrana}
+% \label{fig:pocetni_ekrani}
+% \end{figure}
+
 \begin{figure}[h!]
 \centering
-\begin{minipage}{.5\textwidth}
-   \centering
-  \includegraphics[width=9cm,height=9cm,keepaspectratio]{Implementacija/snimci_ekrana/1_obavestenje_za_dozvolu.jpg}
-  \caption{Snimak ekrana, obaveštenje o traženju dozvole}
-    \label{fig:dozvola}
-
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-   \centering
-  \includegraphics[width=9cm,height=9cm,keepaspectratio]{Implementacija/snimci_ekrana/2_sistemska_dozvola.jpg}
-  \caption{Snimak ekrana, prikaz sistemskog obaveštenja}
-    \label{fig:sistemsko_obavestenje}
-\end{minipage}
+\includegraphics[width=9cm,height=9cm,keepaspectratio]{Implementacija/snimci_ekrana/1_obavestenje_za_dozvolu.jpg}
+\includegraphics[width=9cm,height=9cm,keepaspectratio]{Implementacija/snimci_ekrana/2_sistemska_dozvola.jpg}
+\caption{Snimci ekrana: A. obaveštenje o traženju dozvole, B prikaz sistemskog obaveštenja}
 \end{figure}
+
 
 % ----------------------------------------------------
 \begin{figure}[h!]
