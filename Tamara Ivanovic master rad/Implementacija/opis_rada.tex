@@ -101,7 +101,33 @@ Dalje korišćenje aplikacije je isto kao i korišćenje fizičkog daljinskog up
 \item[Levo dugme] za mikrofon koje je tamnije boje koristi \textit{Google Cloud API}. Pri pritisku dugmeta na donjem delu ekrana pojaviće se poruka da je snimanje započeto i dugme će biti onemogućeno dokle god mikrofon sluša. Nakon pet sekundi prikazaće se poruka da je snimanje završeno, dugme će biti omogućeno i ukoliko je prepoznata komanda ona će se izvršiti.
 \item[Desno dugme] koje je svetlije boje pokreće mikrofon generisan na standardni način koji obezbeđuje \textit{Google}. Pritiskom na dugme se pojavljuje polje generisano od strane \textit{Google}-a kao na slici \ref{fig:google_slusanje}. Izgled tog polja pri neuspešnom slušanju je prikazan na slici \ref{fig:google_neuspesno}, a pri uspešnom na slici \ref{fig:google_uspesno}. Pri uspešnom slušanju kao i u prethodnom slučaju izvršiće se zadata komanda.
 \end{description}
-Komande koje su podržane na ovaj način će biti izlistane u nastavku rada.  
+Komande koje su podržane na ovaj način su prikazane u tabeli \ref{tbl:komande}.
+
+%%===================== TABELA =============================================================
+\begin{table}
+\centering
+\caption{Podržane glasovne komande}
+\label{tbl:komande}
+\begin{tabular}{p{0.2\linewidth} | p{0.4\linewidth}p{0.4\linewidth}}
+\toprule
+Funkcionalnost & Komanda na engleskom jeziku & Komanda na srpskom jeziku \\
+\toprule
+Uključivanje i gašenje uređaja&power, power on, on, power off, off, turn on, turn off, turn on tv, turn off tv, sleep & uključi, ugasi, uključi se, ugasi se, uključi tv, ugasi tv\\\midrule
+Prikaz tv programa &guide, show guide, all channels, show channels &prikaži kanale, svi kanali, kanali, prikaži sve kanale\\\midrule
+Prikaz dostupnih filmova&movie, movies, show movie, show movies, film&filmovi, svi filmovi, lista filmova, prikaži filmove, prikaži listu filmova, prikaži sve filmove \\\midrule
+Kanali uživo&tv, live tv, play live, play live tv&uživo, tv uživo, pusti tv, pusti uživo, prikaži uživo \\\midrule
+Ok &ok, okay, okey&ok, okej \\\midrule
+Nazad&back, return, go back&nazad, vrati, vrati se\\\midrule
+Povratak na početni ekran&home, home screen, show home, go to home, go to home screen& -\\\midrule
+Pojačavanje zvuka&volume up, louder, up volume&pojačaj, glasnije, jače, pojačaj ton\\\midrule
+Stišavanje zvuka&volume down, quieter, down volume&utišaj, tiše, smanji, smanji ton, snizi ton\\\midrule
+Gašenje zvuka&mute, silent&tišina, ugasi zvuk \\\midrule
+Sledeći kanal&up, channel up, next, next channel&sledeći kanal, sledeći, gore, pusti sledeći \\\midrule
+Prethodni kanal&down, channel down, previous, previous channel&prethodni kanal, prošli kanal \\
+\bottomrule
+\end{tabular}
+\end{table}
+%===========================================================================================
 
 \begin{figure}[h!]
   \centering

@@ -54,7 +54,7 @@ Nakon ovih podešavanja moguće je koristiti odabrani \textit{API} u svojoj apli
 Izgled grafičkog interfejsa  konzole, kao i gde se nalaze prethodno navedena podešavanja u konzoli se mogu videti na linku:
 \hyperlink{https://cloud.google.com/speech-to-text/docs/ui-overview}{\textit{Google Cloud} konzola}.
 
-Upotreba \textit{Google Cloud API}-ja može biti malo složenija u kombinaciji sa programskim jezikom \textit{Java} u poređenju sa nekim drugim jezicima. Iz razloga zato što programski jezik \textit{Java} zahteva dodatne korake za generisanje klijentskih biblioteka korišćenjem \textit{gRPC} (eng. \textit{Google Remote Procedure Call}) i proto fajlova (eng. \textit{Protocol Buffers}). O ovome će biti više reči u poglavljima vezanim za implementaciju aplikacije.
+Upotreba \textit{Google Cloud API}-ja može biti malo složenija u kombinaciji sa programskim jezikom \textit{Java} u poređenju sa nekim drugim jezicima. Iz razloga zato što programski jezik \textit{Java} zahteva dodatne korake za generisanje klijentskih biblioteka korišćenjem \textit{gRPC} (eng. \textit{Google Remote Procedure Call}) i proto fajlova (eng. \textit{Protocol Buffers}). O ovome će biti više reči u nastavku teksta.
 
 Kako bi aplikacija mogla da koristi metode iz \textit{API}-ja potrebno je ostvariti konekciju sa serverom. Kreira se instanca \textit{ManagedChannel} koja je deo \textit{Java gRPC} biblioteke, kojoj se prosleđuju adresa i port \textit{gRPC} servera, kao i privatan ključ raspakovan iz JSON datoteke. Moguće je dodati i presretače (eng. \textit{interceptor}) koji pre svakog zahteva mogu da modifikuju zahtev ili odgovor. Za potrebe autentifikacije svakog zahteva putem privatnog ključa ranije generisanog koristi se \textit{ClientAuthInterceptor}.
 
