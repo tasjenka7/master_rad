@@ -91,7 +91,7 @@ Klase unutar paketa \textbf{stbs} su:
 \begin{itemize}
 \item \textit{ChooseAdapter} koja se koristi za prikaz liste pronađenih uređaja,
 \item \textit{ChooseConnection} koja se koristi za odabir i povezivanje sa izabranim uređajem,
-\item \textit{DiscoveryHandler} se koristi za pronalaženje dostupnih uređaja na mreži,
+\item \textit{DiscoveryHandler} koja se koristi za pronalaženje dostupnih uređaja na mreži,
 \item \textit{NsdDiscover} koja se koristi za korišćenje NSD (eng. \textit{Network Service Discovery}) mehanizma za pronalaženje uređaja i
 \item \textit{Stb} koja predstavlja jedan uređaj i sadrži informacije o njemu.
 \end{itemize}
@@ -128,13 +128,13 @@ Komunikacija i izgled ovih klasa su prikazani na dijagramu \ref{fig:dijagramCont
 
 Pored ovih klasa u glavnom paketu aplikacjie nalaze se sledeće klase i interfejsi:
 \begin{itemize}
-\item \textit{AsyncDataReceiver} interfejs služi za primanje asinhronih podataka,
-\item \textit{AsyncReceiver} interfejs služi za primanje asinhronih podataka,
-\item \textit{OnItemClickedListener} interfejs služi za obradu klikova na elemente liste,
-\item \textit{Singleton} klasa se koristi za implementaciju Singlton (eng. \textit{Singleton}) šablona i
-\item \textit{Constants} klasa koja skladišti sve konstante potrebne u razvoju aplikacije.
+\item Interfejs \textit{AsyncDataReceiver} se koristi kada je potrebno vratiti specifične podatke nakon završetka asinhrone operacije.,
+\item Interfejs \textit{AsyncReceiver} se koristi kada je potrebno samo obavestiti o uspehu ili neuspehu asinhrone operacije bez vraćanja specifičnih podataka,
+\item Interfejs \textit{OnItemClickedListener} se koristi za obradu klikova na elemente liste,
+\item Klasa \textit{Singleton} se koristi za implementaciju Singlton (eng. \textit{Singleton}) šablona,
+\item Klasa \textit{Constants} se koristi da skladišti sve konstante potrebne u razvoju aplikacije.
 \end{itemize}
-NJihov dijagram klasa je prikazan na slici \ref{fig:dijagramRoot}.
+Njihov dijagram klasa je prikazan na slici \ref{fig:dijagramRoot}.
 
 %=================== SLIKA ======================================
 \begin{figure}[!ht]
@@ -146,7 +146,7 @@ NJihov dijagram klasa je prikazan na slici \ref{fig:dijagramRoot}.
 %=====================================================================
 
 \section{Implementacija glavnih funkcionalnosti aplikacije}
-Kao što je navedeno u delu \ref{opis_rada} postoje koraci koji su potrebni da se ispune kako bi se aplikacija koristila za upravljanje uređajem za digitalnu televiju. U nastavku će biti prikazani delovi koda i objašnjenja kako implementirati pretragu uređaja na mreži, povezivanje sa odabranim uređajem kao i komunikaciju i slanje komandi na uređaj. Poseban osvrt će biti na implementaciji zadavanja glasovnih komandi. 
+Kao što je navedeno u delu \ref{opis_rada} postoje koraci koji su potrebni da se ispune kako bi se aplikacija koristila za upravljanje uređajem za digitalnu televiziju. U nastavku će biti prikazani delovi koda i objašnjenja kako implementirati pretragu uređaja na mreži, povezivanje sa odabranim uređajem kao i komunikaciju i slanje komandi na uređaj. Poseban osvrt će biti na implementaciji zadavanja glasovnih komandi. 
 
 \subsection{Implementacija pretrage uređaja}
 \subfile{implementacije/impl_pretraga}
