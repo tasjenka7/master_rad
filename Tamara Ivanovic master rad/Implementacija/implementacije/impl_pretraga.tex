@@ -39,13 +39,29 @@
 
 
 \begin{document}
-Za pretragu uređaja koji se nalaze na istoj mreži koristi se klase iz paketa \verb|android.net.nsd|. Otkrivanje mrežnih servisa (eng. \textit{Network Service Discovery (NSD)}) \cite{sajt:nsd} obezbeđuje klase koje pružaju usluge pronalaska svih servisa koje pružaju uređaji na lokalnoj mreži. Potrebno je kreirati jednu klasu u kojoj će se koristiti mogućnosti za otkrivanje koje pruža ova biblioteka i koja je nazvana \textit{NsdDiscover}. Pored ove klase potrebno je napraviti klasu \textit{DiscoveryHandler} koja koristi prethodno kreirane metode u svrhu upravljanja pretragom i rezultatima.
+Sa ciljem pretrage uređaja na istoj mreži u skupu paketa koje su dostupne nalazi se paket  \verb|android.net.nsd|. Otkrivanje mrežnih servisa (eng. \textit{Network Service Discovery, skraćeno NSD}) \cite{sajt:nsd} obezbeđuje klase koje pružaju usluge pronalaska svih servisa koje pružaju uređaji koji su povezani na lokalnu mrežu. Za potrebe aplikacije kreirana je klasa \textit{NsdDiscover} koja koristiti mogućnosti za prepoznavanje koje pruža ova biblioteka. Pored ove klase kreirana je klasa \textit{DiscoveryHandler} koja koristi prethodno kreirane metode u svrhu upravljanja pretragom i rezultatima.
 
-Unutar klase \textit{NsdDiscover} se inicijalizuju osluškivač pretrage (eng. \textit{discovery listener}) i osluškivač rezultata (eng. \textit{resolve listener}). Oba predstavljaju instance klasa iz menadžera za otkrivanje mrežnih servisa (eng. \textit{NsdManager}) i imaju svoje predefinisane metode koje je potrebno prepisati. U listingu \ref{lst:nsd_listeners} su prikazani koraci za inicijalizaciju ova dva osluškivača. 
+Da bi se iskoristio NSD aplikacija mora da implementira osluškivač pretrage (eng. \textit{discovery listener}) i osluškivač rezultata (eng. \textit{resolve listener}). Ovi osluškivači reaguju na otkriće servisa na mreži, kao i na gubitak servisa sa mreže. NSD menažer (eng. \textit{NsdManager}) je klasa omogućava implementaciju ovih osluškivača i obezbeđuje proces identifikacije uređaja i servisa na lokalnoj mreži. Za implementaciju NSD-a su u klasi \textit{NsdDiscover} inicijalizovani osluškivači i prepisane njihove predefinisane metode da odgovaraju potrebama aplikacije.
 
-\lstinputlisting[language=Java, caption= {Inicijalizacija osluškivača pretrage i rezultata}, label = {lst:nsd_listeners}]{kodovi/NsdListeners.java}
+Osluškivač pretrage reaguje na različite događaje u procesu otkrivanja servisa. Metode koje su dostupne da se prepišu i prilagode potrebama aplikacije su:
+\begin{itemize}
+    \item \textit{onDiscoveryStarted} --- automatski se poziva kada počne pretraga, uz pomoć klase \textit{WiFiManager} dohvataju se dostupne informacije o bežičnoj internet konekciji,
+    \item \textit{onServiceFound} --- poziva se kada se otkrije neki servis na lokalnoj mreži, ovde se vrše provere da li servis koji se traži i definiše se šta se izvršava ukoliko je pronađen traženi servis,
+    \item \textit{onServiceLost} --- poziva se kada servis više nije dostupan,
+    \item \textit{onDiscoveryStopped} --- poziva se kada se zaustavi pretraga, 
+    \item \textit{onStartDiscoveryFailed} --- poziva se ukoliko nakon nekog vremena nije bilo moguće da se pokrene pretraga,
+    \item \textit{onStopDiscoveryFailed} --- poziva se ukoliko nakon nekog vremena nije bilo moguće da se zaustavi pretraga.
+\end{itemize}
 
-Potrebno je definisati i jednu funkciju povratnog poziva (eng. \textit{callback}) \verb|public void onDiscover(NsdServiceInfo service){}| koja će biti prepisana u klasi \textit{DiscoveryHandler} prilikom kreiranja instance klase \textit{NsdDiscover}. Klasa \textit{DiscoveryHandler} je kreirana da bi pružila logiku koja će se izvršavati za pretragu. Ovo je prikazano u listingu \ref{lst:discovery_handler} putem definicije funckije koja kreira listu STB uređaja \verb|getStbList|.
+Osluškivač rezultata je zadužen da kada se pronađu servisi da dohvati i upravlja informacijama koje su dobijene. Neke od informacija koje se dobijaju ovim putem su naziv hosta i broj porta. Metode koje je moguće prepisati prilikom inicija osluškivača rezultata su:
+\begin{itemize}
+    \item \textit{onServiceResolved} --- ukoliko je pronalazak servisa i dohvatanje informacija o njemu uspešno izvršeno poziva se ova metoda koja dalje prosleđuje informacije,
+    \item \textit{onResolveFailed} --- definiše ponašanje ukoliko rešavanje ne uspe i pruža informacije o grešci koja je nastupila.
+\end{itemize}
+
+Koriščenje osluškivača na ovaj način obezbeđuje da se asinhrono izvršava otkrivanja i rešavanje mrežnih servisa. Ovim se sprečava da dođe do blokiranja korisničkog interfejsa dok se izvršavaju ove operacije. Samim tim korisnik nije svestan posla koji se dešava u pozadini i obezbeđuje se bolje korisničko iskustvo. 
+
+Potrebno je definisati i jednu funkciju povratnog poziva (eng. \textit{callback}) \verb|public void onDiscover(NsdServiceInfo service){}| koja će biti pozivana kada se pozove metoda \textit{onServiceResolved} i kojoj će biti prosleđene informacije koje su dobijene.  U klasi \textit{DiscoveryHandler} prilikom kreiranja instance klase \textit{NsdDiscover} će ova funkcija povratnog poziva biti prepisana. Klasa \textit{DiscoveryHandler} je kreirana da bi pružila logiku koja će se izvršavati za pretragu. Ovo je prikazano u listingu \ref{lst:discovery_handler} putem definicije funckije koja kreira listu STB uređaja \verb|getStbList|.
 
 \lstinputlisting[language=Java, caption= {Metod klase DiscoveryHandler za pretragu uređaja}, label = {lst:discovery_handler}]{kodovi/DiscoveryHandler.java}
 
