@@ -37,9 +37,15 @@
 
 %----------- 
 \begin{document}
-Nakon uspešnog pronalaska uređaja na mreži i prikaza liste na ekranu korisnika potrebno je obezbediti da se korisnik klikom na odabrani uređaj poveže sa istim. Za izvršenje ovog zadatka prvenstveno je potrebno obezbediti klasu koja omogućava komunikaciju korišćenjem UDP protokola (eng. \textit{User Datagram Protocol}) iz razloga što servis koji se koristi za potrebe ove aplikacije poržava UDP protokol. Glavne funkcionalnosti za UDP komunikaciju su prikazane u listingu  \ref{lst:udpClient}.
-
-\lstinputlisting[language=Java, caption= {Klasa UdpClient}, label = {lst:udpClient}]{kodovi/UdpClient.java}
+Nakon uspešnog pronalaska uređaja na mreži i prikaza liste na ekranu korisnika potrebno je obezbediti da se korisnik klikom na odabrani uređaj poveže sa istim. Za izvršenje ovog zadatka prvenstveno je potrebno obezbediti klasu koja omogućava komunikaciju korišćenjem UDP protokola (eng. \textit{User Datagram Protocol}) iz razloga što servis koji se koristi za potrebe ove aplikacije poržava UDP protokol. UDP ne garantuje isporuku paketa, ali zato omogućava brzu i efikasnu komunikaciju, što ga čini pogodnim za aplikacije u realnom vremenu, kao što je video striming (eng. \textit{streaming}). Metode koje su impelentirane za izvršenje UDP komunikacije su:
+\begin{itemize}
+    \item \textit{connect} --- uspostavlja konekciju preko date IP adrese i porta. Ova metoda se izvršava asinhrono na novoj niti. Za uspostavljanje konekcije se koristi klasa \textit{DatagramSocket} koja je deo programskog jezika Java, 
+    \item \textit{disconnect} --- zatvara soket ukoliko postoji,
+    \item \textit{send} --- šalje komande na uređaj,
+    \item \textit{startListening} --- osluškuje na odgovor od strane servera (u ovoj implementaciji uređaja sa kojim se povezalo),
+    \item \textit{stopListening} --- prekida rad niti koja osluškuje čekajući odgovor.
+    
+\end{itemize}
 
 
 Takođe, kreirana je i jedna unutrašnja klasa koja izvršava asinhroni zadatak u pozadini. \verb|doInBackground| je funkcija koja pomoću klijenta za UDP protokol povezuje sa uređajem na osnovu informacija koje prethodno dobila o njemu. U slučaju da uređaj uparen sa korisnikovim mobilnim uređajem potrebno je poslati komandu za uparivanje o čemu će biti više reči u nastavku. Implementacija ove unutrašnje klase nazvane \textit{ConnectToStb} se nalazi u listingu \ref{lst:connectToStb}.
