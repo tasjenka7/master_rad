@@ -2,7 +2,7 @@
 \usepackage{subfiles}
 \documentclass[12pt,oneside]{memoir} 
 \usepackage[latinica]{matfmaster} 
-
+\usepackage{hyperref}
 %-----------------------------------------------------------------------------------------
 \usepackage{listings}
 \usepackage{xcolor}
@@ -36,26 +36,25 @@
 
 \begin{document}
 
-Kompanija \textit{Google} pruža skupove pravila i protokola, odnosno \textit{Google API}-je kako bi programeri mogli da obezbede interakciju svojih aplikacija sa \textit{Google} servisima i resursima. Zahvaljujući tome aplikacije imaju mogućnosti da pristupe podacima, funkcionalnostima i drugim resursima koje \textit{Google} nudi. Postoji više kategorija \textit{Google API-ja} od kojih su najpoznatiji: \textit{Google Cloud API}, \textit{Google Maps API}, \textit{YouTube API} i \textit{Google Ads API}. Spisak svih dostupnih \textit{API}-ja sa detaljnijm opisima i uslovima korišćenja mogu se pronaći na linku: \hyperlink{https://developers.google.com/apis-explorer}{spisak \textit{Google API}-ja}.  Svaki \textit{API} služi za pružanje pristupa specifičnim funkcionalnostima i resursima kompanije. Kako bi se koristili potrebno je registrovati se na njihovom sajtu, a zatim i dobiti \textit{API} ključ koji služi za autentifikaciju i autorizaciju zahteva. Zavisno od \textit{API}-ja, neki zahtevi mogu biti besplatni, dok drugi mogu imati troškove u zavisnosti od količine korišćenja.  
+Kompanija \textit{Google} pruža skupove pravila i protokola, odnosno \textit{Google API}-je kako bi programeri mogli da obezbede interakciju svojih aplikacija sa \textit{Google} servisima i resursima. Zahvaljujući tome aplikacije imaju mogućnosti da pristupe podacima, funkcionalnostima i drugim resursima koje \textit{Google} nudi. Postoji više kategorija \textit{Google API-ja} od kojih su najpoznatiji: \textit{Google Cloud API}, \textit{Google Maps API}, \textit{YouTube API} i \textit{Google Ads API}. Spisak svih dostupnih \textit{API}-ja sa detaljnijm opisima i uslovima korišćenja mogu se pronaći na linku: \href{https://developers.google.com/apis-explorer}{spisak \textit{Google API}-ja}.  Svaki \textit{API} služi za pružanje pristupa specifičnim funkcionalnostima i resursima kompanije. Kako bi se koristili potrebno je registrovati se na njihovom sajtu, a zatim i dobiti \textit{API} ključ koji služi za autentifikaciju i autorizaciju zahteva. Zavisno od \textit{API}-ja, neki zahtevi mogu biti besplatni, dok drugi mogu imati troškove u zavisnosti od količine korišćenja.  
 
-\textit{Google Cloud API}-ji omogućavaju interakciju sa \textit{Google Cloud Platform} servisima odnosno funkcionalnostima računarstva u oblaku, uključujući \textit{Google Cloud Storage}, \textit{Google Cloud Functions}, \textit{Google Compute Engine} i mnoge druge. Jedan specifičan servis je \textit{Speech-to-Text API}, odnosno govor u tekst. Servis pomoću neuronskih mreža i mašinskog učenja pretvara audio zapis u tekst. Podržava više od 120 jezika. Za sve dostupne jezike podržani osnovni model prepoznavanja i model prepoznavanja komandi i pretrage (eng. \textit{command and search model}). Neki jezici imaju podršku i za još neke modele kao što su poboljšani poziv (eng. \textit{enhanced audio call}) i poboljšani video (eng. \textit{enhanced video}). Primeri upotrebe su prepoznavanje komandi u realnom vremenu, generisanje titlova i transkripcija audio zapisa.   
-Upravljanje \textit{API} ključevima, naplatom usluga, \textit{API} servisima koji su omogućeni, protokom korišćenja, kao i projektima za koje se koriste se vrše preko konzole (eng. \textit{Google Cloud Console}). Kako bi se neki servis koristio potrebno je ispuniti sledeće korake: 
+\textit{Google Cloud API}-ji omogućavaju interakciju sa \textit{Google Cloud Platform} servisima odnosno funkcionalnostima računarstva u oblaku, uključujući \textit{Google Cloud Storage}, \textit{Google Cloud Functions}, \textit{Google Compute Engine} i mnoge druge. Jedan specifičan servis je \textit{Speech-to-Text API}, odnosno prevođenje govora u tekst. Servis pomoću neuronskih mreža i mašinskog učenja pretvara audio zapis u tekst. Podržava više od 120 jezika. Za sve dostupne jezike podržani su osnovni model prepoznavanja i model prepoznavanja komandi i pretrage (eng. \textit{command and search model}). Neki jezici imaju podršku i za još neke modele kao što su poboljšani poziv (eng. \textit{enhanced audio call}) i poboljšani video (eng. \textit{enhanced video}). Primeri upotrebe su prepoznavanje komandi u realnom vremenu, generisanje titlova i transkripcija audio zapisa. Preko konzole (eng. \textit{Google Cloud Console}) moguće je kreirati nove \textit{API} ključeve, upravljati načinom plaćanja usluga, pratiti protok korišćenja omogućenih servisa, upravljati podešavanjim kreiranih projekata i još mnogo toga. Kako bi se neki servis koristio potrebno je izvršiti sledeće korake: 
 \begin{enumerate}
-    \item Kreiranje projekta u konzoli ili odabir već postojećeg.
-    \item Omogućavanje željenog \textit{API}-ja u konzoli ukoliko već nije omogućen. 
-    \item Kreiranje servisnog računa u delu \textit{Credentials} koji se koriste za autentifikaciju kada aplikacija komunicira sa \textit{Google} servisima. U ovom koraku se generiše i privatni ključ koji se u \textit{JSON} formatu čuva na uređaju.
-    \item Na računaru je potrebno instalirati Google Cloud SDK koji omogućava upravljanje resursima na \textit{Google Cloud}-u putem komandne linije.
-    \item U komandnoj liniji je potrebno pokrenuti komandu
+    \item Kreirati projekta u konzoli ili odabrati neki postojeći.
+    \item Omogućiti željeni \textit{API} u konzoli ukoliko već nije omogućen. 
+    \item Kreirati servisni račun u delu \textit{Credentials} koji se koristi za autentifikaciju kada aplikacija komunicira sa \textit{Google} servisima i generisati privatni ključ koji se u \textit{JSON} formatu čuva na uređaju.
+    \item Instalirati na računaru \textit{Google Cloud SDK} koji omogućava upravljanje resursima na \textit{Google Cloud}-u putem komandne linije.
+    \item Pokrenuti sledeću liniju koda iz komandne linije:
     
     \verb|gcloud auth activate-service-account --key-file=PUTANJA_DO_KLJUCA|
 \end{enumerate}
 Nakon ovih podešavanja moguće je koristiti odabrani \textit{API} u svojoj aplikaciji.
 
 Izgled grafičkog interfejsa  konzole, kao i gde se nalaze prethodno navedena podešavanja u konzoli se mogu videti na linku:
-\hyperlink{https://cloud.google.com/speech-to-text/docs/ui-overview}{\textit{Google Cloud} konzola}.
+\href{https://cloud.google.com/speech-to-text/docs/ui-overview}{\textit{Google Cloud} konzola}.
 
-Upotreba \textit{Google Cloud API}-ja može biti malo složenija u kombinaciji sa programskim jezikom \textit{Java} u poređenju sa nekim drugim jezicima. Iz razloga zato što programski jezik \textit{Java} zahteva dodatne korake za generisanje klijentskih biblioteka korišćenjem \textit{gRPC} (eng. \textit{Google Remote Procedure Call}) i proto fajlova (eng. \textit{Protocol Buffers}). O ovome će biti više reči u nastavku teksta.
+Upotreba \textit{Google Cloud API}-ja može biti malo složenija u kombinaciji sa programskim jezikom \textit{Java} u poređenju sa nekim drugim jezicima. Programski jezik \textit{Java} zahteva dodatne korake za generisanje klijentskih biblioteka korišćenjem \textit{gRPC} (eng. \textit{Google Remote Procedure Call}) i proto fajlova (eng. \textit{Protocol Buffers}). O ovome će biti više reči u nastavku teksta.
 
-Kako bi aplikacija mogla da koristi metode iz \textit{API}-ja potrebno je ostvariti konekciju sa serverom. Kreira se instanca \textit{ManagedChannel} koja je deo \textit{Java gRPC} biblioteke, kojoj se prosleđuju adresa i port \textit{gRPC} servera, kao i privatan ključ raspakovan iz JSON datoteke. Moguće je dodati i presretače (eng. \textit{interceptor}) koji pre svakog zahteva mogu da modifikuju zahtev ili odgovor. Za potrebe autentifikacije svakog zahteva putem privatnog ključa ranije generisanog koristi se \textit{ClientAuthInterceptor}.
+Kako bi aplikacija mogla da koristi metode iz \textit{API}-ja potrebno je ostvariti konekciju sa serverom. U klasi koja služi da omogući komunikaciju između aplikacije i servera kreira se instanca klase \textit{ManagedChannel} koja je deo \textit{Java gRPC} biblioteke. Ovoj instanci se prosleđuju adresa i port \textit{gRPC} servera, kao i privatan ključ raspakovan iz JSON datoteke. Moguće je dodati i presretače (eng. \textit{interceptor}) koji pre svakog zahteva mogu da modifikuju zahtev ili odgovor. Za potrebe autentifikacije svakog zahteva putem privatnog ključa ranije generisanog koristi se \textit{ClientAuthInterceptor}.
 
 \end{document}
