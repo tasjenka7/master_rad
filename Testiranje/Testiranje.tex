@@ -1,0 +1,47 @@
+\documentclass[../TamaraIvanovicMasterRad.tex]{subfiles}
+\usepackage{subfiles}
+\documentclass[12pt,oneside]{memoir} 
+\usepackage[latinica]{matfmaster} 
+
+% ------------------
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+% ------------------
+\begin{document}
+
+Bitan deo razvoja softvera čini testiranje. Uz pomoć njega se proveravaju kvalitet i funkcionalnost softvera što olakšava uočavanje i ispravljanje grešaka na vreme. Testiranje pomaže i da se proveri da li su svi zahtevi koji su postavljeni pri planiranju ispunjeni. Jedan od oblika testiranja koji se najčešće primenjuje je testiranje jedinica koda (eng. \textit{Unit testing}). Kod ovog testiranja testiraju se manje komponente aplikacije, kao na primer metode, i proverava se da li rade kako je očekivano. Moguće je kreirati lažne (eng. \textit{mock}) vrednosti da simuliraju komunikaciju sa drugim klasama, mrežom, bazom podataka i sl. jer direktna međusobna komunikacija u ovim testovima nije dozvoljena. Pored automatizovanih testova u koje spada testiranje jedinica koda, veliku primenu u razvoju softvera ima i manuelno testiranje. 
+
+Za testiranje jedinica koda aplikacija napisanih u programskom jeziku Java najčešče se koristi radni okvir \textit{JUnit}\cite{sajt:junit}. Pored ovog radnog okvira za testiranje aplikacije \textit{Daljinski za digitalnu televiziju} korišćen je i radni okvir \textit{Mockito} \cite{sajt:mockito} koji pruža dobru simulaciju lažnih vrednosti. Izvršavanjem testova jedinica koda ove aplikacije svi testovi koji proveravaju da li ispravno šalju komande prolaze uspešno. Provera čuvanja instance u \textit{Singleton} objektu, kao i informacije o STB uređaju se uspešno izvršavaju. Kod testiranja klasa koje u svojim metodama imaju kreiranje instanci klase \textit{NsdDiscover} kao što su \textit{UdpClient} i \textit{DiscoveryHandler} dolazi do neuspeha u izvršavanju ovih testova. Ovi neuspesi ukazuju da nije korišćena kreirana lažna vrednost već da su se kreirale prave instance što ne bi trebalo da bude slučaj. Kao i da je potrebno refaktorisati k\^{o}d da odgovara čistoj arhitekturi.
+
+Android pruža mogućnost kreiranja ???? (eng. \textit{Instrumented test}) \cite{sajt:instrumentedT} koji omogućavaju da se testiraju delovi koda koji imaju interakciju sa grafičkim interfejsom aplikacije. Ovi testovi se izvršavaju pomoću \textit{AndroidX Test} biblioteke koja obezbeđuje veliki broj API-ja koje se mogu koristiti za testiranje. Za potrebe aplikacije \textit{Daljinski za digitalnu televiziju} korišćen je \textit{Espresso} \cite{sajt:espresspT}. Na ovaj način testirane su funkcionalnosti za izbor STB uređaja sa kojim će se korisnik povezati. 
+
+Testiranje celokupne aplikacije je izvršeno i manuelno sa većim fokusom na funkcionalnosti nakon povezivanja. Ovo testiranje je izvršeno više puta tokom implementacije aplikacije kako bi se dobili korisni komentari od strane korisnika. Nekoliko kolega je učestvovalo u testiranju i pružilo sugestije i impresije o radu aplikacije. Korišćenje svih dugmića za daljinski upravljač se pokazalo 100\% uspešnim. Problemi su se javljali prilikom korišćenja prepoznavanja glasa. Nijedna fraza nije pokazala apsolutnu tačnost, kraće fraze kao što su \textit{ok}, \textit{back}, \textit{up}, \textit{down}, \textit{next} i \textit{silent} su imale bolju prolaznost od dužih fraza i reči koje imaju više načina izgovora. Standardni način prepoznavanja govora je pokazao situacije u kojima ili ne prepozna šta je rečeno ili prepozna pogrešno. \textit{Google} način je dovodio do situacija gde prepozna deo fraze, pogotovo ako se napravi kraća pauza između reči, kao i do situacija da uopšte ne osluškuje. 
+
+
+\end{document}

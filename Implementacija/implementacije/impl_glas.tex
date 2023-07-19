@@ -1,0 +1,80 @@
+\documentclass[struktura.tex]{subfiles}
+\usepackage{subfiles}
+\documentclass[12pt,oneside]{memoir} 
+\usepackage[latinica]{matfmaster} 
+
+% --------
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{listingsutf8}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,      
+    inputencoding=utf8,
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+%----------- 
+\begin{document}
+
+\subsection{Standardni način implementacije prepoznavanja govora}
+Kao standardni način za prepoznavanje glasovnih komandi koji je obezbeđen od strane \textit{Google}-a se smatra upotreba klase \textit{Recognizer Intent}. Ova klasa je deo \textit{Speech Recognizer API}-ja ugrađenog u Android, a sve metode koje su definisane u njemu je potrebno izvršavati na glavnoj niti (eng. \textit{Main Thread}). Da bi se pokrenuo proces prepooznavanja govora kreira se namera sa akcijom \verb|RecognizerIntent.ACTION_RECOGNIZE_SPEECH|. Ova naredba pokreće aktivnost koja sluša korisnikov govor i prepoznaje ga. \textit{Recognizer Intent} pruža korisne opcije kojima se može precizirati kako sistem za prepoznavanje govora treba da se ponaša i kako komunicira sa korisnikom. Neke od opcija su:
+\begin{enumerate}
+    \item \textbf{EXTRA\_LANGUAGE\_MODEL} koja se koristi za odabir modela jezika za prepoznavanje govora. Jedan primer je \textbf{LANGUAGE\_MODEL\_FREE\_FORM} koji se preporučuje za prepoznavanje slobodnog stila govora.
+    \item \textbf{EXTRA\_PROMPT} koja omogućava definisanje poruke koja će se prikazati korisniku prilikom slušanja.
+    \item \textbf{EXTRA\_MAX\_RESULTS} koja omogućava ograničavanje maksimalnog broja rezulata koje će vratiti.
+\end{enumerate}
+
+Namera koja je kreirana se koristi u paru sa klasom \textit{ActivityResultLauncher}. Instanca se registruje u kodu pozivanjem metode \textit{registerForActivityResult} koja kao argumente prima \textit{ActivityResultContract} koji definiše ulazne i izlazne tipove i funkciju povratnog poziva koja prima izlaz. Pozivanjem metoda \textit{launch} sa argumentom definisane namere se pokreće pretraga i po završetku aktivira funkcija povratnog poziva koja obrađuje rezultat.
+
+\subsection{Prepoznavanje govora pomoću Google računarstva u oblaku}
+Kao što je navedeno u poglavlju \ref{sec:google} \textit{Google Cloud Speech-to-Text API} koristi gRPC za komunikaciju klijentske aplikacije sa \textit{Google Cloud} servisima. gRPC interfejsi postoje za sve \textit{Google Cloud} servise i oni su definisani putem Protobuf interfejsa za definiciju jezika (eng. \textit{Interface Definition Language}, skraćeno \textit{IDL}). Potrebno je preuzeti fajlove sa zvaničnog \textit{Googleapis GitHub} repozitorijuma koji je moguće pronaći na \href{https://github.com/googleapis/googleapis/tree/master/google/cloud/speech}{vebu ovde}. Uz pomoć Protobuf kompajlera \verb|protoc| generiše se gRPC k\^{o}d za programski jezik Java. Generisane klase je potrebno uključiti u projekat, kao i dodati sledeće zavisnosti datoteku za izgradnju aplikacije:
+\begin{verbatim}
+    implementation 'com.google.protobuf:protobuf-javalite:3.21.7'
+    implementation 'io.grpc:grpc-okhttp:1.50.2'
+    implementation 'io.grpc:grpc-protobuf-lite:1.50.2'
+    implementation 'io.grpc:grpc-stub:1.50.2' 
+\end{verbatim}
+
+Poželjno je sve funkcionalnosti koje omogućavaju slanje glasovnih podakata prema serveru i prijem prepoznatih rezultata izdvojiti u jednu klasu koja implementira \verb|StreamObserver<StreamingRecognizeResponse>|. Postavljanje konfiguracije, frekvencije uzorkovanja, podržanih jezika i model prepoznavanja su neke od opcija koje je moguće postaviti pri inicijalizaciji prepoznavanja govora. Metoda koja izvršava ovu inicijalizaciju i slanje inicijalnog zahteva dati su u listingu \ref{lst:google}
+
+\lstinputlisting[language=Java, caption= {Inicijalizacija koriščenja Google Cloud Speech API-ja}, label = {lst:google}]{kodovi/InitializeGoogle.java}
+
+
+Bitne metode koje se prepisuju su \textit{onNext} koja je poziva kada \textit{Google Cloud API} vrati odgovor, \textit{recognizeBytes} koja se koristi za slanje audio podataka ka serveru i \textit{finish} koja signalizira kraj prepoznavanja govora i salje \textit{onCompleted} poziv ka serveru. Za snimanje zvuka koji je potrebno proslediti prethodno navedenim metodama koriste se klase iz biblioteke \verb|android.media|. Proces snimanja se poziva na odvojenoj niti koja čita audio podatke i šalje ih serveru preko metode \textit{recognizeBytes}.
+
+\subsection{Poređenje predloženih implementacija zadavanja glasovnih komandi}
+
+Prepoznavanje govora je zahvaljujući mašinskom učenju i celokupnom razvoju programiranja i tehničkih mogućnosti uređaja postala kvalitetnija i pristupačnija i korisnicima čiji jezici spadaju u slabije zastupljene. Kvalitet kojim će rešenje biti dato u mnogome zavisi od uslova u kojima je snimak nastao - da li je snimano u bučnom ili akustičnom prostoru, kakav je kvalitet internet konekcije, kao i kvalitet samog tehničkog uređaja. Pored ovoga zavisi i od tečnosti i jasnosti govora korisnika koji snima audio snimak. Samim tim ne može se uvek očekivati velika tačnost dobijenih rezultata.
+
+Jedna od prednosti korišćenja \textit{Google Cloud}-a je što dobijeni rezultat u sebi ima i alternativne verzije, kao i kolika je stabilnost pruženog rezultata. Samim tim moguće je birati koji rezultat će se koristiti dalje. Ovo rešenje pruža mogućnost prepoznavanja velikog broja jezika i dijalekata jer je obučenost modela koji se koriste na visokom nivou. Ovaj API nudi širok spektar mogućnosti za prilagođavanje prepoznavanja govora, uključujući mogućnost postavljanja modela prepoznavanja, frekvencije uzorkovanja, alternativnih jezika i mnogo toga. 
+
+Što se tiče standardnog načina implementacije kao prednost se izdvaja što je besplatno za korišćenje. Takođe, ovaj način implementacije je mnogo lakši iz razloga što su sve potrebne klase već uključene u biblioteke koje svi mogu da koriste i u svega nekoliko linija koda je moguće imati funkcionalan kod.
+
+Sa strane vizuelnog efekta \textit{Google Cloud} pruža mogućnost programeru da osmisli kako će izgledati grafički interfejs u toku snimanja. Standardni način pruža predefinisani dijalog kome je jedino moguće promeniti poruku kojom se obraća klijentu. 
+
+Mane predloženih rešenja su kompatibilne sa prednostima suprotnog rešenja. Kod rešenja zasnovanog na \textit{Google Cloud}-u manama se mogu smatrati naplaćivanje usluga i kompleksnost implementacije. Dok se kod standardnog rešenja kao mane mogu uzeti u obzir ograničena tačnost rešenja, nekompatibilnost sa određenim jezicima i dijalektima i nedovoljna fleksibilnost za prilagođavanje rešenja potrebama. 
+
+
+\end{document}
