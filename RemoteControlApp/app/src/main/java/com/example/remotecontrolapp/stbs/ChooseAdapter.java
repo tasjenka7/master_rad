@@ -24,7 +24,7 @@ public class ChooseAdapter extends RecyclerView.Adapter<ChooseAdapter.ChooseView
     private ArrayList<Stb> stbs;
     private OnItemClickedListener clickedListener;
 
-    public ChooseAdapter(Context context){
+    public ChooseAdapter(Context context) {
         this.context = context;
     }
 
@@ -35,7 +35,7 @@ public class ChooseAdapter extends RecyclerView.Adapter<ChooseAdapter.ChooseView
         View view = LayoutInflater.from(context).inflate(R.layout.stb_view, parent, false);
         final ChooseViewHolder holder = new ChooseViewHolder(view);
         view.setOnClickListener(view1 -> {
-            if(clickedListener != null){
+            if (clickedListener != null) {
                 clickedListener.onItemClicked(holder.getAdapterPosition());
             }
         });
@@ -53,22 +53,25 @@ public class ChooseAdapter extends RecyclerView.Adapter<ChooseAdapter.ChooseView
         return stbs.size();
     }
 
-    public void registerClickListener(OnItemClickedListener clickListener){
+    public void registerClickListener(OnItemClickedListener clickListener) {
         this.clickedListener = clickListener;
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void refresh(ArrayList<Stb> stbs){
+    public void refresh(ArrayList<Stb> stbs) {
         this.stbs = stbs;
-        notifyDataSetChanged();
+        if (stbs != null) {
+            notifyDataSetChanged();
+        }
+
     }
 
-    public class ChooseViewHolder extends RecyclerView.ViewHolder{
+    public class ChooseViewHolder extends RecyclerView.ViewHolder {
 
         private View root;
         private TextView tv;
 
-        public ChooseViewHolder(View view){
+        public ChooseViewHolder(View view) {
             super(view);
             root = view;
             tv = view.findViewById(R.id.tv_box_name);
@@ -76,11 +79,11 @@ public class ChooseAdapter extends RecyclerView.Adapter<ChooseAdapter.ChooseView
 
         }
 
-        private TextView getNameView(){
+        public TextView getNameView() {
             return tv;
         }
 
-        public View getRoot(){
+        public View getRoot() {
             return root;
         }
 

@@ -83,8 +83,8 @@ public class StreamingRecognizeClient implements StreamObserver<StreamingRecogni
     @Override
     public void onNext(StreamingRecognizeResponse response) {
 
-        Log.i(TAG, "[onNext]: Received response: " +
-                response.toString());
+//        Log.i(TAG, "[onNext]: Received response: " +
+//                response.toString());
 
         String text = null;
         final StreamingRecognitionResult result = response.getResults(0);
@@ -92,11 +92,11 @@ public class StreamingRecognizeClient implements StreamObserver<StreamingRecogni
         if(result.getAlternativesCount() > 0){
             final SpeechRecognitionAlternative alternative = result.getAlternatives(0);
             text = alternative.getTranscript();
-            Log.d(TAG, "[onNext]: transcript returned: " + text);
+//            Log.d(TAG, "[onNext]: transcript returned: " + text);
         }
 
         if( text != null){
-            Log.i(TAG,"[onNext]: call checkSaid()");
+//            Log.i(TAG,"[onNext]: call checkSaid()");
             checkSaid(text);
         }
     }
@@ -105,19 +105,19 @@ public class StreamingRecognizeClient implements StreamObserver<StreamingRecogni
     public void onError(Throwable error) {
 
         Status status = Status.fromThrowable(error);
-        Log.w(TAG, "[onError]: recognize failed: {0}: " + status);
-        Log.e(TAG, "Error to Recognize.", error);
+//        Log.w(TAG, "[onError]: recognize failed: {0}: " + status);
+//        Log.e(TAG, "Error to Recognize.", error);
     }
 
     @Override
     public void onCompleted() {
-        Log.i(TAG, "[onCompleted] recognize completed.");
+//        Log.i(TAG, "[onCompleted] recognize completed.");
     }
 
     public void recognizeBytes(byte[] audioBytes, int size) {
 
         if (!mIsInitialized) {
-            Log.d(TAG, "[recognizeBytes]: call initializeRecognition");
+//            Log.d(TAG, "[recognizeBytes]: call initializeRecognition");
             initializeRecognition();
             mIsInitialized = true;
         }
@@ -129,7 +129,7 @@ public class StreamingRecognizeClient implements StreamObserver<StreamingRecogni
                             .build();
             requestObserver.onNext(request);
         } catch (RuntimeException e) {
-            Log.e(TAG, "[recognizeBytes]: Error stopping.", e);
+//            Log.e(TAG, "[recognizeBytes]: Error stopping.", e);
             requestObserver.onError(e);
             throw e;
         }
@@ -137,7 +137,7 @@ public class StreamingRecognizeClient implements StreamObserver<StreamingRecogni
     }
 
     public void finish() {
-        Log.i(TAG, "[finish]: call onCompleted");
+//        Log.i(TAG, "[finish]: call onCompleted");
         requestObserver.onCompleted();
         mIsInitialized = false;
     }
@@ -171,42 +171,42 @@ public class StreamingRecognizeClient implements StreamObserver<StreamingRecogni
             recordedData = recordedData.toLowerCase();
             if(Constants.vpower.contains(recordedData)){
                 Singleton.getInstance().getCommandsHandler().onPowerClicked();
-                Log.d(checkedTag, "Power said");
+//                Log.d(checkedTag, "Power said");
             } else if(Constants.vguide.contains(recordedData)){
                 Singleton.getInstance().getCommandsHandler().onGuideClicked();
-                Log.d(checkedTag, "Guide said");
+//                Log.d(checkedTag, "Guide said");
             }else if(Constants.vmovie.contains(recordedData)){
                 Singleton.getInstance().getCommandsHandler().onMovieButtonClicked();
-                Log.d(checkedTag, "Movie said");
+//                Log.d(checkedTag, "Movie said");
             }else if(Constants.vlive.contains(recordedData)) {
                 Singleton.getInstance().getCommandsHandler().onLiveTvClicked();
-                Log.d(checkedTag, "live said");
+//                Log.d(checkedTag, "live said");
             }else if(Constants.vok.contains(recordedData)) {
                 Singleton.getInstance().getCommandsHandler().onDpadOkClicked();
-                Log.d(checkedTag, "Ok said");
+//                Log.d(checkedTag, "Ok said");
             }else if(Constants.vback.contains(recordedData)) {
                 Singleton.getInstance().getCommandsHandler().onBackClicked();
-                Log.d(checkedTag, "Back said");
+//                Log.d(checkedTag, "Back said");
             }else if(Constants.vhome.contains(recordedData)) {
                 Singleton.getInstance().getCommandsHandler().onHomeClicked();
-                Log.d(checkedTag, "Home said");
+//                Log.d(checkedTag, "Home said");
             }else if(Constants.vvolup.contains(recordedData)) {
                 Singleton.getInstance().getCommandsHandler().onVolumeUpClicked();
-                Log.d(checkedTag, "Vol up said");
+//                Log.d(checkedTag, "Vol up said");
             }else if(Constants.vvoldown.contains(recordedData)) {
                 Singleton.getInstance().getCommandsHandler().onVolumeDownClicked();
-                Log.d(checkedTag, "Vol down said");
+//                Log.d(checkedTag, "Vol down said");
             }else if(Constants.vmute.contains(recordedData)) {
                 Singleton.getInstance().getCommandsHandler().onVolumeMuteClicked();
-                Log.d(checkedTag, "Mute said");
+//                Log.d(checkedTag, "Mute said");
             }else if(Constants.vchup.contains(recordedData)) {
                 Singleton.getInstance().getCommandsHandler().onChannelUpClicked();
-                Log.d(checkedTag, "Channel up said");
+//                Log.d(checkedTag, "Channel up said");
             }else if(Constants.vchdown.contains(recordedData)) {
                 Singleton.getInstance().getCommandsHandler().onChannelDownClicked();
-                Log.d(checkedTag, "Channel down said");
+//                Log.d(checkedTag, "Channel down said");
             }else{
-                Log.d(checkedTag, "not recognizable command");
+//                Log.d(checkedTag, "not recognizable command");
             }
 
         }else{

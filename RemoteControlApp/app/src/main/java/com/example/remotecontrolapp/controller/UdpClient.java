@@ -1,7 +1,5 @@
 package com.example.remotecontrolapp.controller;
 
-import android.util.Log;
-
 import com.example.remotecontrolapp.AsyncReceiver;
 import com.example.remotecontrolapp.Singleton;
 
@@ -15,11 +13,11 @@ public class UdpClient {
 
     String TAG = this.getClass().getSimpleName();
 
-    private Thread mThread;
+    public Thread mThread;
     private static final int MAX_UDP_DATAGRAM_LEN = 1500;
     private static final int kTHREAD_SLEEP_TIME = 2000;
 
-    private DatagramSocket mSocket;
+    public DatagramSocket mSocket;
 
 
     public void disconnect(){
@@ -43,7 +41,7 @@ public class UdpClient {
             mSocket.connect(address, port);
 
             if (mSocket.isConnected()) {
-                Log.d(TAG, "[connect] Socket IS CONNECTED " + mSocket.isConnected() + " for (address, port) " + address + port);
+//                Log.d(TAG, "[connect] Socket IS CONNECTED " + mSocket.isConnected() + " for (address, port) " + address + port);
                 asyncDataReceiver.onReceive();
             } else {
                 asyncDataReceiver.onFailed("Socket not connected");
@@ -54,7 +52,7 @@ public class UdpClient {
 
     public void send(final String message) {
 
-        Log.d(TAG, "[send] message " + message);
+//        Log.d(TAG, "[send] message " + message);
 
         new Thread(() -> {
             byte[] buf = message.getBytes();
@@ -63,13 +61,13 @@ public class UdpClient {
             try {
                 if (mSocket.isConnected()) {
                     mSocket.send(p);
-                    Log.d(TAG, "[send] sending data to stb - mSocket is connected");
+//                    Log.d(TAG, "[send] sending data to stb - mSocket is connected");
                 } else {
-                    Log.d(TAG, "[send] sending data to stb - mSOCKET not connected");
+//                    Log.d(TAG, "[send] sending data to stb - mSOCKET not connected");
                 }
 
             } catch (IOException e) {
-                Log.e(TAG, "[send] " + e.getMessage());
+//                Log.e(TAG, "[send] " + e.getMessage());
                 e.printStackTrace();
             }
         }).start();
@@ -77,12 +75,12 @@ public class UdpClient {
 
     public void startListening() {
 
-        Log.d(TAG, "[startListening] entered");
+//        Log.d(TAG, "[startListening] entered");
         stopListening();
 
         mThread = new Thread(() -> {
 
-            Log.d(TAG, "[startListening] Thread created");
+//            Log.d(TAG, "[startListening] Thread created");
 
             while (!Thread.currentThread().isInterrupted()) {
 
@@ -95,7 +93,7 @@ public class UdpClient {
                             mSocket.receive(pack);
                             String msg = new String(pack.getData(), pack.getOffset(), pack.getLength());
                             msg = msg.trim();
-                            Log.d(TAG, "[startListening] Packet from server Received: " + msg);
+//                            Log.d(TAG, "[startListening] Packet from server Received: " + msg);
                             Singleton.getInstance().getCommandsHandler().onServerCommandReceived(msg);
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -109,7 +107,7 @@ public class UdpClient {
                     e.printStackTrace();
                 }
             }
-            Log.d(TAG, "[startListening] Remote app listener thread stopped");
+//            Log.d(TAG, "[startListening] Remote app listener thread stopped");
         });
         mThread.start();
     }

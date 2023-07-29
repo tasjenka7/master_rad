@@ -64,14 +64,16 @@ public class Constants {
             new ArrayList<>(Arrays.asList("tv", "live tv", "play live", "play live tv",
                     "uživo", "tv uživo", "pusti tv", "pusti uživo", "prikaži uživo"));
 
-    public static final ArrayList<String> vok = new ArrayList<>(Arrays.asList("ok", "okay", "okey", "okej"));
+    public static final ArrayList<String> vok = new ArrayList<>(Arrays.asList("ok", "okay", "okey",
+            "okej", "uredu", "u redu"));
 
     public static final ArrayList<String> vback =
             new ArrayList<>(Arrays.asList("back", "return", "go back",
                     "nazad", "vrati", "vrati se"));
 
     public static final ArrayList<String> vhome =
-            new ArrayList<>(Arrays.asList("home", "home screen", "show home", "go to home", "go to home screen")); //da li ima nesto jos?
+            new ArrayList<>(Arrays.asList("home", "home screen", "show home", "go to home", "go to home screen",
+                    "početni ekran", "prvi ekran", "početak"));
 
     public static final ArrayList<String> vvolup =
             new ArrayList<>(Arrays.asList("volume up", "louder", "up volume",
@@ -86,11 +88,11 @@ public class Constants {
 
     public static final ArrayList<String> vchup =
             new ArrayList<>(Arrays.asList("up", "channel up", "next", "next channel",
-                    "sledeći kanal", "sledeći", "gore", "pusti sledeći"));
+                    "sledeći kanal", "sledeći", "gore", "pusti sledeći", "pusti sledeći kanal"));
 
     public static final ArrayList<String> vchdown =
             new ArrayList<>(Arrays.asList("down", "channel down", "previous", "previous channel",
-                    "prethodni kanal", "prošli kanal"));
+                    "prethodni kanal", "prošli kanal", "pusti prethodni", "pusti prethodni kanal"));
 
     public static final String permissionMsg = "Da biste bili u mogućnosti da koristite mogućnost upravljanja glasom potrebno je da dozvolite upotrebu mikrofona. Odluku možete bilo kad promeniti u podešavanjima telefona.";
     public static final String noDevices = "Nismo u mogućnosti da pronađemo nijedan uređaj na mreži. ";

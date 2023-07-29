@@ -142,7 +142,7 @@ public class ChooseConnection extends AppCompatActivity {
 
     }
 
-    private void saveServer(String selectedHostAddress) {
+    public void saveServer(String selectedHostAddress) {
 
         SharedPreferences preferences = Singleton.getContext().getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE);
         Log.d(TAG, "[saveServer] getSharedPreferences: " + preferences);
@@ -152,7 +152,7 @@ public class ChooseConnection extends AppCompatActivity {
 
     }
 
-    private boolean isServerInSharedPrefs(String serverHostAddress) {
+    public boolean isServerInSharedPrefs(String serverHostAddress) {
 
         SharedPreferences preferences = Singleton.getContext().getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE);
         Log.d(TAG, "[isServerInSharedPrefs] getSharedPreferences: " + preferences);
@@ -172,7 +172,7 @@ public class ChooseConnection extends AppCompatActivity {
     }
 
 
-    private void loadDevice() {
+    public void loadDevice() {
 
         progressDialog.setMessage(Constants.lookingForDevices);
         progressDialog.setIndeterminate(true);

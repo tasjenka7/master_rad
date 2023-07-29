@@ -1,7 +1,6 @@
 package com.example.remotecontrolapp.stbs;
 
 import android.net.nsd.NsdServiceInfo;
-import android.util.Log;
 
 import com.example.remotecontrolapp.AsyncDataReceiver;
 import com.example.remotecontrolapp.Singleton;
@@ -23,7 +22,7 @@ public class DiscoveryHandler {
         nsdDiscover = new NsdDiscover(Singleton.getContext()){
             @Override
             public void onDiscover(NsdServiceInfo service) {
-                Log.d(TAG, "[onDiscover] service discovered: " + service.getServiceName());
+//                Log.d(TAG, "[onDiscover] service discovered: " + service.getServiceName());
                 boolean alreadyFound = false;
                 Stb stb = new Stb(0, service.getServiceName(), service.getServiceType(), service.getHost(), service.getPort());
 
@@ -42,21 +41,27 @@ public class DiscoveryHandler {
                     }
                     receiver.onReceive(stbList);
                 }
-                Log.d(TAG, "[onDiscover] choose box: " + service.getServiceName() + " on port " + service.getPort());
+//                Log.d(TAG, "[onDiscover] choose box: " + service.getServiceName() + " on port " + service.getPort());
             }
         };
         startDiscovery();
     }
 
     public void startDiscovery(){
-        Log.d(TAG, "[startDiscovery]");
-        nsdDiscover.startDiscovery();
+////        Log.d(TAG, "[startDiscovery]");
+//        nsdDiscover.startDiscovery();
+        if (nsdDiscover != null) {
+            nsdDiscover.startDiscovery();
+        }
+//        else {
+//            Log.d(TAG, "NsdDiscover is null");
+//        }
     }
 
     public void stopDiscovery(){
 
         if(nsdDiscover != null){
-            Log.d(TAG, "[stopDiscovery]");
+//            Log.d(TAG, "[stopDiscovery]");
             nsdDiscover.stopDiscovery();
         }
     }

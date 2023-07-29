@@ -32,7 +32,7 @@ public class Singleton extends Application {
 
         if(instance == null){
             instance = new Singleton();
-            Log.d(TAG, "[getInstance] instance == null, new Singleton()");
+//            Log.d(TAG, "[getInstance] instance == null, new Singleton()");
         }
         return instance;
     }
@@ -46,6 +46,9 @@ public class Singleton extends Application {
         return commandsHandler;
     }
 
+    public void setCommandsHandler(CommandsHandler commandsHandler) {
+        this.commandsHandler = commandsHandler;
+    }
 
     @Override
     public void onCreate() {
@@ -54,7 +57,7 @@ public class Singleton extends Application {
         instance = this;
         context = this;
         discoveryHandler = new DiscoveryHandler();
-        commandsHandler = new CommandsHandler();
+        setCommandsHandler(new CommandsHandler());
 
         Log.d(TAG, "[onCreate]");
     }

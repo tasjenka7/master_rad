@@ -1,7 +1,5 @@
 package com.example.remotecontrolapp.stbs;
 
-import android.util.Log;
-
 import java.net.InetAddress;
 
 public class Stb {
@@ -23,7 +21,7 @@ public class Stb {
         this.host = host;
         this.port = port;
 
-        Log.d(TAG, "[contructor] stb created");
+//        Log.d(TAG, "[contructor] stb created");
     }
 
     public int getId(){
