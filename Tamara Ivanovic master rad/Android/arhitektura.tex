@@ -7,9 +7,9 @@
 
 \begin{figure}[!ht]
   \centering
-  \label{fig:arhitektura}
   \includegraphics[width=0.9\textwidth]{arhitekturaSrp.png}
   \caption{Arhitektura OS Android, slika kreirana na osnovu \cite{sajt:androidDevelopersArhitektura}}
+  \label{fig:arhitektura}
 \end{figure}
 
 Platforma Android predstavlja skup komponenti kao što su OS Android, biblioteke, radni okviri, API-ji i sl. koji omogućavaju razvoj i izvršavanje Android aplikacija. Zasnovana je na Linuks jezgru pri čemu se jezgro i drajveri nalaze u prostoru jezgra (eng. \textit{kernel space}), a nativne biblioteke u korisničkom prostoru (eng. \textit{user space}). Sve aplikacije se izvršavaju u Java virtuelnoj mašini koja se zove \textit{Android Runtime (ili, skraćeno, ART)}, a postoje Java biblioteke koje povezuju aplikaciju sa bibliotekama napisanim u nativnom jeziku. Sama arhitektura softvera kod Androida je slojevita i postoje četiri sloja koja se naslanjaju na sloj fizičke arhitekture. Slojevi arhitekture prikazani su na slici \ref{fig:arhitektura}, a navedeni od viših ka nižim (eng. \textit{top-down}) su \cite{book:papp}:

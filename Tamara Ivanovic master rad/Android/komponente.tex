@@ -47,6 +47,14 @@ Kreiranje Android aplikacija ne bi bilo moguće bez njenih osnovnih komponenti. 
 \item Provajderi sadržaja (eng. \textit{content provider})
 \end{enumerate}
 
+\subsection{Datoteka AndroidManifest.xml}
+\label{sec:manifest}
+Glavna datoteka bez kog nijedna Android aplikacija ne može da postoji je \textit{AndroidManifest.xml}. Pomoću ove XML datoteke OS Android i njegovi alati za izgradnju aplikacija (eng. \textit{build tools}) dobijaju sve potrebne informacije za instalaciju i pokretanje aplikacije. K\^{o}d počinje navođenjem verzije XML-a i enkodiranja, nakon čega sledi etiketa (eng. \textit{tag}) \textit{<manifest>} u okviru kog se piše ceo k\^{o}d. Obavezni deo koda je etiketa \textit{<application>}. Pregled osnovnih elemenata i njihovih opisa može se videti u kodu \ref{lst:manifest}. Više informacija o elementnima i njihovim opcijama može se pronaći na vebu \cite{sajt:manifest}.
+
+\lstinputlisting[language=XML, caption= {Primer \textit{AndroidManifest.xml}, izvor: \cite{sajt:manifest}}, label = {lst:manifest}]{Manifest.xml}
+
+
+
 \subsection{Aktivnosti}
 Aktivnosti predstavljaju jedan prikaz grafičkog korisničkog interfejsa (eng. \textit{Graphical User Interface}) na ekranu. Ne postoji ograničeni broj aktivnosti koje jedna aplikacija može imati, takođe moguće je da postoje aplikacije bez aktivnosti. Za razliku od mnogih programskih jezika gde pokretanje aplikacije počinje pozivom metoda \textit{main()} i uvek od istog mesta, Android aplikacije ne moraju uvek započinjati na istom mestu. Uglavnom Android aplikacije imaju jedan početni ekran koji se naziva \textit{Main Activity} i  koji se pokreće pri pokretanju aplikacije i više dodatnih koji su logički povezani sa početnim. Logika iza koje stoji ovaj koncept je da je korisniku omogućeno da pokrene različite delove aplikacije u zavisnosti od trenutnih potreba. Jedan primer koji ovo ilustruje je kada korisnik klikne na obaveštenje aplikacije za dostavu hrane da je hrana koju je naručio u putu, aplikacija će otvoriti aktivnost koja prikazuje mapu za praćenje, a ne početnu stranu za izbor restorana.
 
@@ -94,11 +102,6 @@ Provajderi sadržaja obezbeđuju skladištenje podataka aplikacije. Pored samog 
 \label{sec:namere}
 Namera (eng. \textit{intent}) predstavlja objekat koji slanjem poruke zahteva da drugi deo aplikacije ili druga aplikacija izvrši neku akciju. Najčešće su tri upotrebe namera: pokretanje aktivnosti, pokretanje servisa i slanje poruka (eng. \textit{broadcast}). Implementacija se vrši pomoću klase \textit{Intent} i potrebno je kreirati novi objekat \cite{sajt:androidDevelopers}. 
 
-\subsection{AndroidManifest.xml}
-\label{sec:manifest}
-Glavna datoteka bez kog nijedna Android aplikacija ne može da postoji je \textit{AndroidManifest.xml}. Pomoću ove XML datoteke OS Android i njegovi alati za izgradnju aplikacija (eng. \textit{build tools}) dobijaju sve potrebne informacije za instalaciju i pokretanje aplikacije. K\^{o}d počinje navođenjem verzije XML-a i enkodiranja, nakon čega sledi etiketa (eng. \textit{tag}) \textit{<manifest>} u okviru kog se piše ceo k\^{o}d. Obavezni deo koda je etiketa \textit{<application>}. Pregled osnovnih elemenata i njihovih opisa može se videti u kodu \ref{lst:manifest}. Više informacija o elementnima i njihovim opcijama može se pronaći na vebu \cite{sajt:manifest}
-
-\lstinputlisting[language=XML, caption= {Primer AndroidManifest.xml, izvor: \cite{sajt:manifest}}, label = {lst:manifest}]{Manifest.xml}
 
 
 
