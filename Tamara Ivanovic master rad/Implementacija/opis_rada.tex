@@ -8,7 +8,7 @@
 \begin{document}
 
 \subsection{Instalacija}
-Instaliranje Android aplikacija na mobilne telefone je moguće na više načina. Najjednostavniji nacin je preuzimanje aplikacije iz \textit{Google Play} prodavnice. Ako aplikacija nije dostupna preko prodavnice, moze se instalirati preuzimanjem datoteke u formatu \textbf{APK} (eng. \textit{Android Package}). \textbf{APK} predstavlja format datoteka koji OS Android koristi za instaliranje i distribuciju aplikacija. Ova datoteka se kreira u \textit{build} direktorijumu projekta nakon što se u \textit{Android Studio}-u odabere opcija \textit{build}. Za aplikaciju \textit{Daljinski za digitalnu televiziju} instalaciona datoteka se može preuzeti na narednom linku: \href{https://drive.google.com/file/d/1gBlfRibn4jrFDe3TTBCsHUq9MDowEBty/view?usp=drive_link}{daljinski.apk}. Klikom na preuzetu datoteku, koja se može naći u direktorijumu gde se čuvaju preuzete datoteke, pokreće se instalacija aplikacije.
+Instaliranje Android aplikacija na mobilne telefone je moguće na više načina. Najjednostavniji način je preuzimanje aplikacije iz \textit{Google Play} prodavnice. Ako aplikacija nije dostupna preko prodavnice, može se instalirati preuzimanjem datoteke u formatu \textbf{APK} (eng. \textit{Android Package}). \textbf{APK} predstavlja format datoteka koji OS Android koristi za instaliranje i distribuciju aplikacija. Ova datoteka se kreira u \textit{build} direktorijumu projekta nakon što se u \textit{Android Studio}-u odabere opcija \textit{build}. Za aplikaciju \textit{Daljinski za digitalnu televiziju} instalaciona datoteka se može preuzeti na narednom linku: \href{https://drive.google.com/file/d/1gBlfRibn4jrFDe3TTBCsHUq9MDowEBty/view?usp=drive_link}{daljinski.apk}. Klikom na preuzetu datoteku, koja se može naći u direktorijumu gde se čuvaju preuzete datoteke, pokreće se instalacija aplikacije.
 
 Za potrebe testiranja aplikacije tokom implementacije najčešće se koriste dva načina instaliranja. Za njih je potrebno omogućiti opcije programera (eng. \textit{developer options}) na mobilnom uređaju i da se uređaj poveže pomoću USB kabla sa računarom na kom se nalazi k\^{o}d. Prva mogućnost pokretanja je da se u \textit{Android Studio}-u pritisne dugme \textit{Run}. Druga opcija je da na računaru postoji instaliran \textbf{adb} (eng. \textit{Android Debug Bridge}) i u terminalu da se pokrene komanda \verb|adb install app-debug.apk|. 
 
@@ -90,7 +90,7 @@ Svi uređaji koji su pronađeni se ispisuju na ekranu kao na slici \ref{fig:pron
 
 
 
-Dalje korišćenje aplikacije je isto kao i korišćenje fizičkog daljinskog upravljača. Pri svakom pritisku dugmeta će korisnik osetiti blagu vibraciju što ujedno obaveštava i da je dugme pritisnuto. U slučaju kada nije data dozvola za korišćenje mikrofona nije moguće zadavati komande glasom i tada su dugmići za mikrofone onemogućeni i precrtani. U suprotnom korisnik može neometano da ih koristi.
+Dalje korišćenje aplikacije je isto kao i korišćenje fizičkog daljinskog upravljača. Pri svakom pritisku dugmeta će korisnik osetiti blagu vibraciju što ujedno obaveštava i da je dugme pritisnuto. U slučaju kada nije data dozvola za korišćenje mikrofona nije moguće zadavati komande glasom i tada su dugmići za mikrofone onemogućeni. U suprotnom korisnik može neometano da ih koristi.
 \begin{description}
 \item[Levo dugme] za mikrofon koje je tamnije boje koristi \textit{Google Cloud API}. Pri pritisku dugmeta na donjem delu ekrana pojaviće se poruka da je snimanje započeto i dugme će biti onemogućeno dokle god mikrofon sluša. Nakon pet sekundi prikazaće se poruka da je snimanje završeno, dugme će biti omogućeno i ukoliko je prepoznata komanda ona će se izvršiti.
 \item[Desno dugme] koje je svetlije boje pokreće mikrofon generisan na standardni način koji obezbeđuje \textit{Google}. Pritiskom na dugme se pojavljuje polje generisano od strane \textit{Google}-a kao na slici \ref{fig:google_slusanje}. Izgled tog polja pri neuspešnom slušanju je prikazan na slici \ref{fig:google_neuspesno}, a pri uspešnom na slici \ref{fig:google_uspesno}. Pri uspešnom slušanju kao i u prethodnom slučaju izvršiće se zadata komanda.
@@ -146,7 +146,7 @@ Prethodni kanal&down, channel down, previous, previous channel&prethodni kanal, 
   \caption{Prikaz uspeha}
    \label{fig:google_uspesno}
     \end{subfigure}
-    \caption{Snimci ekrana polja za slušanje generisanog od strane kompanije \textit{Google}}
+    \caption{Snimci ekrana polja za slušanje generisanog od strane kompanije Gugl}
     \label{fig:obavestenja}
 \end{figure}
 

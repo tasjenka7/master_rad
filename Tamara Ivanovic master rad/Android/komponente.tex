@@ -38,7 +38,7 @@
 
 Pod Android aplikacijom se smatra bilo koja aplikacija koja se pokreće na uređaju sa OS-om Android. Programiranje ovih aplikacija je moguće u mnogim programskim jezicima, dok se zvaničnim smatraju programski jezici Java i Kotlin \cite{sajt:kotlin}. U nastavku će biti reči o programiranju u programskom jeziku Java.
 
-Kreiranje Android aplikacija ne bi bilo moguće bez njenih osnovnih komponenti. Svaka komponenta ima svoje karakteristike, slučajeve upotrebe kao i funkcije koje vrši. Moguće je i poželjno kombinovati ih u aplikaciji. Svaka komponenta koje se kreira u aplikaciji mora da se navede u datoteci \textit{\titleref{sec:manifest}}. Četiri osnovne komponente su:
+Kreiranje Android aplikacija ne bi bilo moguće bez njenih osnovnih komponenti. Svaka komponenta ima svoje karakteristike, slučajeve upotrebe kao i funkcije koje vrši. Moguće je i poželjno kombinovati ih u aplikaciji. Svaka komponenta koje se kreira u aplikaciji mora da se navede u datoteci \textit{AndroidManifest.xml}. Četiri osnovne komponente su:
 
 \begin{enumerate}
 \item Aktivnosti (eng. \textit{activity})
@@ -49,7 +49,7 @@ Kreiranje Android aplikacija ne bi bilo moguće bez njenih osnovnih komponenti. 
 
 \subsection{Datoteka AndroidManifest.xml}
 \label{sec:manifest}
-Glavna datoteka bez kog nijedna Android aplikacija ne može da postoji je \textit{AndroidManifest.xml}. Pomoću ove XML datoteke OS Android i njegovi alati za izgradnju aplikacija (eng. \textit{build tools}) dobijaju sve potrebne informacije za instalaciju i pokretanje aplikacije. K\^{o}d počinje navođenjem verzije XML-a i enkodiranja, nakon čega sledi etiketa (eng. \textit{tag}) \textit{<manifest>} u okviru kog se piše ceo k\^{o}d. Obavezni deo koda je etiketa \textit{<application>}. Pregled osnovnih elemenata i njihovih opisa može se videti u kodu \ref{lst:manifest}. Više informacija o elementnima i njihovim opcijama može se pronaći na vebu \cite{sajt:manifest}.
+Glavna datoteka bez koje nijedna Android aplikacija ne može da postoji je \textit{AndroidManifest.xml}. Pomoću ove XML datoteke OS Android i njegovi alati za izgradnju aplikacija (eng. \textit{build tools}) dobijaju sve potrebne informacije za instalaciju i pokretanje aplikacije. K\^{o}d počinje navođenjem verzije XML-a i enkodiranja, nakon čega sledi etiketa (eng. \textit{tag}) \textit{<manifest>} u okviru kog se piše ceo k\^{o}d. Obavezni deo koda je etiketa \textit{<application>}. Pregled osnovnih elemenata i njihovih opisa može se videti u kodu \ref{lst:manifest}. Više informacija o elementnima i njihovim opcijama može se pronaći na vebu \cite{sajt:manifest}.
 
 \lstinputlisting[language=XML, caption= {Primer \textit{AndroidManifest.xml}, izvor: \cite{sajt:manifest}}, label = {lst:manifest}]{Manifest.xml}
 
@@ -100,7 +100,7 @@ Provajderi sadržaja obezbeđuju skladištenje podataka aplikacije. Pored samog 
 
 \subsection{Namere}
 \label{sec:namere}
-Namera (eng. \textit{intent}) predstavlja objekat koji slanjem poruke zahteva da drugi deo aplikacije ili druga aplikacija izvrši neku akciju. Najčešće su tri upotrebe namera: pokretanje aktivnosti, pokretanje servisa i slanje poruka (eng. \textit{broadcast}). Implementacija se vrši pomoću klase \textit{Intent} i potrebno je kreirati novi objekat \cite{sajt:androidDevelopers}. 
+Namera predstavlja objekat koji slanjem poruke zahteva da drugi deo aplikacije ili druga aplikacija izvrši neku akciju. Najčešće su tri upotrebe namera: pokretanje aktivnosti, pokretanje servisa i slanje poruka (eng. \textit{broadcast}). Implementacija se vrši pomoću klase \textit{Intent} i potrebno je kreirati novi objekat \cite{sajt:androidDevelopers}. 
 
 
 

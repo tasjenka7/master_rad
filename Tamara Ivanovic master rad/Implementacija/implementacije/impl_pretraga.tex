@@ -53,9 +53,9 @@ Osluškivač pretrage reaguje na različite događaje u procesu otkrivanja servi
     \item \textit{onStopDiscoveryFailed} --- poziva se ukoliko nakon nekog vremena nije bilo moguće da se zaustavi pretraga.
 \end{itemize}
 
-Osluškivač rezultata je zadužen da kada se pronađu servisi da dohvati i upravlja informacijama koje su dobijene. Neke od informacija koje se dobijaju ovim putem su naziv hosta i broj porta. Metode koje je moguće prepisati prilikom inicija osluškivača rezultata su:
+Osluškivač rezultata je zadužen da kada se pronađu servisi da dohvati i upravlja informacijama koje su dobijene. Neke od informacija koje se dobijaju ovim putem su naziv hosta i broj porta. Metode koje je moguće prepisati prilikom inicijalizacije osluškivača rezultata su:
 \begin{itemize}
-    \item \textit{onServiceResolved} --- ukoliko je pronalazak servisa i dohvatanje informacija o njemu uspešno izvršeno poziva se ova metoda koja dalje prosleđuje informacije,
+    \item \textit{onServiceResolved} --- ukoliko su pronalazak servisa i dohvatanje informacija o njemu uspešno izvršeni poziva se ova metoda koja dalje prosleđuje informacije,
     \item \textit{onResolveFailed} --- definiše ponašanje ukoliko rešavanje ne uspe i pruža informacije o grešci koja je nastupila.
 \end{itemize}
 
