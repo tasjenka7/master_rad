@@ -39,19 +39,20 @@
 
 
 \begin{document}
-Komunikacija aplikacije sa STB uređajem je implementirana putem UDP protokola kao što je prikazano u prethodnom poglavlju. Za slanje komandi implementirana je funkcija \verb|send(String message)| koja kreira novu nit u kojoj bajtove poruke pakuje u jedan \textit{DatagramPacket}\cite{sajt:datagram} i preko soketa šalje povezanom uređaju. Preduslov da ova funckija radi je da je soket povezan, odnosno da je komunikacija ostvarena za zadatu mrežu i port. Implementacija funkcije je zadata u listingu \ref{lst:send}.
+Komunikacija aplikacije sa STB uređajem je implementirana putem UDP protokola kao što je prikazano u prethodnom poglavlju. Za slanje komandi implementirana je funkcija \verb|send(String message)| koja kreira novu nit u kojoj bajtove poruke pakuje u jedan \textit{DatagramPacket} \cite{sajt:datagram} i preko soketa šalje povezanom uređaju. Preduslov da ova funckija radi je da je soket povezan, odnosno da je komunikacija ostvarena za zadatu mrežu i port. Implementacija funkcije je zadata u listingu \ref{lst:send}.
 
 \lstinputlisting[language=Java, caption= {Funkcija za slanje komandi preko UDP protokola}, label = {lst:send}]{kodovi/SendCommand.java}
 
-Poruka koja se šalje predstavlja konstantu za klik dugmeta na daljinskom uprvaljaču. U Androidu događaj tastature (eng. \textit{Key Event}) je događaj kada korisnik pritisne taster na tastaturi ili nekom od podržanih uređaja. Svaki od tastera ima svoju numeričku vrednost, odnosno k\^{o}d tastature (eng.\textit{ Key Code}). Oni zajedno olakšavaju interakciju sa uređajima koji koriste neki od podržanih uređaja. Nije potrebno znati vrednosti ovih konstanti napamet jer im se može pristupiti uključivanjem paketa \verb|android.view.KeyEvent|. 
+Poruka koja se šalje predstavlja konstantu za klik dugmeta na daljinskom uprvaljaču. U Androidu događaj tastature (eng. \textit{Key Event}) je događaj kada korisnik pritisne, zadrži ili pusti neki taster na fizičkom uređaju, a istoimena klasa služi za rukovanje ovim događajima. Svaki od tastera ima svoju numeričku vrednost, odnosno k\^{o}d tastature (eng.\textit{Key Code}). Događaj tastature i k\^{o}d tastature se često koriste zajedno kako bi se ispravno reagovalo na pritiske tastera. Nije potrebno znati vrednosti ovih konstanti napamet jer im se može pristupiti uključivanjem paketa \verb|android.view.KeyEvent|. 
 
-Može se napraviti klasa koja upravlja komandama sa imenom \textit{CommandsHandler}. I u njoj implementirati funkciju za svako dugme koje je moguće pritisnuti. Kada se u glavnoj klasi pritisne dugme na primer za odlazak na početni ekran potrebno je pozvati funkciju na sledeći način: 
+Kreirana je klasa \textit{CommandsHandler} koja služi da upravlja komandama. Implementirane su funkcije za sve funkcionalnosti daljinskog upravljača. Kada se u glavnoj klasi pritisne dugme na primer za odlazak na početni ekran potrebno je pozvati funkciju na sledeći način: 
 
 \verb|Singleton.getInstance().getCommandsHandler().onHomeClicked();|
 
-S obzirom da je kreirana Singleton instanca aplikacije potrebno je dohvatiti tu instancu i nad njom instancu klase koja upravlja komandama i zatim i funkciju koja obrađuje traženi zahtev. Linija koda koja se izvršava pri ovom pozivu iz klase \textit{CommandsHandler} je 
+Aplikacija je kreirana tako da ima jednu instancu kojoj možemo pristupiti pomoću klase \textit{Singleton} i njene funkcije \textit{getIstance()}. Instanci klase \textit{CommandsHandler} preko koje se vrši upravljanje komandama se pristupa pozivom funkcije \textit{getCommandsHandler()}. Nakon pristupa ovoj instanci poziva se funkcija za otvaranje početnog ekrana. Linija koda koja se izvršava pri ovom pozivu iz klase \textit{CommandsHandler} je 
 
 \verb|getClient().send(String.valueOf(android.view.KeyEventKEYCODE_HOME));|
 
+Na isti način moguće je pristupiti svim funkcijama definisanim u klasi \textit{CommandsHandler}
 
 \end{document}
