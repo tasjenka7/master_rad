@@ -41,7 +41,7 @@
 \subsection{Standardni način implementacije prepoznavanja govora}
 Kao standardni način za prepoznavanje glasovnih komandi koji je obezbeđen od strane Gugla se smatra upotreba klase \textit{Recognizer Intent}. Ova klasa je deo \textit{Speech Recognizer API}-ja ugrađenog u Android, a sve metode koje su definisane u njemu je potrebno izvršavati na glavnoj niti (eng. \textit{Main Thread}). Da bi se pokrenuo proces prepooznavanja govora kreira se namera sa akcijom \lstinline!RecognizerIntent.ACTION_RECOGNIZE_SPEECH!. Ova naredba pokreće aktivnost koja sluša korisnikov govor i prepoznaje ga. Klasa \textit{Recognizer Intent} pruža korisne opcije kojima se može precizirati kako sistem za prepoznavanje govora treba da se ponaša i kako komunicira sa korisnikom. Neke od opcija su:
 \begin{enumerate}
-    \item \textbf{EXTRA\_LANGUAGE\_MODEL} koja se koristi za odabir modela jezika za prepoznavanje govora. Jedan primer je \textbf{LANGUAGE\_MODEL\_FREE\_FORM} koji se preporučuje za prepoznavanje slobodnog stila govora.
+    \item \textbf{EXTRA\_LANGUAGE\_MODEL} koja se koristi za odabir modela jezika za prepoznavanje govora. Jedan primer je \textbf{LANGUAGE\_MODEL\_FREE} \textbf{\_FORM} koji se preporučuje za prepoznavanje slobodnog stila govora.
     \item \textbf{EXTRA\_PROMPT} koja omogućava definisanje poruke koja će se prikazati korisniku prilikom slušanja.
     \item \textbf{EXTRA\_MAX\_RESULTS} koja omogućava ograničavanje maksimalnog broja rezulata koje će vratiti.
 \end{enumerate}
