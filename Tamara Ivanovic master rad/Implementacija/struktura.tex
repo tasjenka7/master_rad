@@ -3,6 +3,9 @@
 \documentclass[12pt,oneside]{memoir} 
 \usepackage[latinica]{matfmaster} 
 
+\usepackage{rotating}
+
+
 \begin{document}
 K\^{o}d svake Android aplikacije se nalazi u direktorijumu: \textbf{app}. Osnovnu strukturu direktorijuma \textbf{app} bilo koje Android aplikacije čine poddirektorijumi: 
 
@@ -104,13 +107,15 @@ Klase unutar paketa \textbf{stbs} su:
 Dijagram klasa ovog paketa se može videti na slici \ref{fig:dijagramStbs}.
 
 
+
+
 %=================== SLIKA ======================================
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\textwidth]{Implementacija/dijagrami/stbs_pakage_class_diagram.jpg}
-  \caption{Dijagram klasa za paket stbs}
-  \label{fig:dijagramStbs}
-\end{figure}
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=\textheight]{Implementacija/dijagrami/stbs_pakage_class_diagram.jpg}
+    \caption{Dijagram klasa za paket stbs}
+    \label{fig:dijagramStbs}
+\end{sidewaysfigure}
 %=====================================================================
 
 Klase unutar paketa \textbf{controller} su:
@@ -126,11 +131,13 @@ Komunikacija i izgled ovih klasa su prikazani na dijagramu \ref{fig:dijagramCont
 %=================== SLIKA ======================================
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=\textwidth]{Implementacija/dijagrami/controller_package_class_diagram.jpg}
+  \includegraphics[width=\textwidth,height=0.65\paperheight]{Implementacija/dijagrami/controller_package_class_diagram.jpg}
   \caption{Dijagram klasa za paket controller}
   \label{fig:dijagramController}
 \end{figure}
 %=====================================================================
+
+
 
 Pored ovih klasa u glavnom paketu aplikacjie nalaze se sledeće klase i interfejsi:
 \begin{itemize}
