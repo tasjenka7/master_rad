@@ -99,4 +99,6 @@ public class Constants {
     public static final String searchAgain = "Traži ponovo";
     public static final String closeApp = "Zatvori aplikaciju";
     public static final String lookingForDevices = "Pretraga uređaja";
+    public static final String standardWay = "Standardni mikrofon";
+    public static final String sttWay = "Mikrofon sa upotrebom Google Speech-To-Text Api-ja";
 }

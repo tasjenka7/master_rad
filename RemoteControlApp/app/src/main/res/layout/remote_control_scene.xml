@@ -58,7 +58,7 @@
         android:id="@+id/linearLayout13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -233,7 +233,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="2dp"
         android:background="@drawable/arrow"
         android:contentDescription="@string/up"
         android:onClick="onClick"
@@ -338,18 +338,6 @@
             app:tint="@android:color/holo_red_dark"
             tools:ignore="ImageContrastCheck" />
 
-        <ImageButton
-            android:id="@+id/micBtnOriginal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#2194BF"
-            android:contentDescription="@string/mic"
-            android:onClick="onClick"
-            app:srcCompat="@android:drawable/ic_btn_speak_now"
-            app:tint="#E48B8B"
-            tools:ignore="ImageContrastCheck" />
-
         <Button
             android:id="@+id/homeBtn"
             android:layout_width="wrap_content"
@@ -374,7 +362,7 @@
             android:id="@+id/linearLayoutVol"
             android:layout_width = "wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -421,7 +409,7 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             >
 
             <Button

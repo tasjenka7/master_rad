@@ -129,7 +129,6 @@ public class ChooseConnection extends AppCompatActivity {
             loadDevice();
         }
 
-
     }
 
     private void showMessageOkCancel(DialogInterface.OnClickListener okListener) {

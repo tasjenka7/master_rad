@@ -13,6 +13,8 @@ import android.os.Vibrator;
 import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -22,6 +24,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
@@ -32,6 +35,7 @@ import com.example.remotecontrolapp.Singleton;
 import com.example.remotecontrolapp.stbs.ChooseConnection;
 
 import java.io.InputStream;
+import java.util.Objects;
 
 import io.grpc.ManagedChannel;
 
@@ -49,7 +53,8 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
     private static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
     private static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
 
-
+    private Menu mMenu;
+    private boolean isStt = false;
     public AudioRecord mAudioRecord = null;
     private boolean mIsRecording = false;
     private StreamingRecognizeClient mStreamingClient;
@@ -61,6 +66,7 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.remote_control_scene);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
 
         initialize();
 
@@ -95,11 +101,8 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
 
         if (PackageManager.PERMISSION_DENIED == ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)) {
             ImageButton mic = findViewById(R.id.micBtn);
-            ImageButton micOrig = findViewById(R.id.micBtnOriginal);
             mic.setEnabled(false);
-            micOrig.setEnabled(false);
             mic.setImageResource(R.drawable.ic_baseline_mic_off_32);
-            micOrig.setImageResource(R.drawable.ic_baseline_mic_off_32);
         }
 
         mAudioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,
@@ -109,6 +112,44 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
                 mBufferSize);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        mMenu = menu;
+        int groupId = 0;
+
+        // Add the menu items to the same group
+        menu.add(groupId, 1, 0, Constants.standardWay).setCheckable(true);
+        menu.add(groupId, 2, 1, Constants.sttWay).setCheckable(true);
+
+        // Set the initial state based on isStt value
+        menu.findItem(1).setChecked(!isStt);
+        menu.findItem(2).setChecked(isStt);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case 1: // ID for Constants.standardWay
+                isStt = false;
+                item.setChecked(true);
+                mMenu.findItem(2).setChecked(false);
+                break;
+            case 2: // ID for Constants.sttWay
+                isStt = true;
+                item.setChecked(true);
+                mMenu.findItem(1).setChecked(false);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        return true;
+    }
+
+
 
     @Override
     protected void onDestroy() {
@@ -180,10 +221,12 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
                 Singleton.getInstance().getCommandsHandler().onBackClicked();
                 break;
             case R.id.micBtn:
-                onMicClicked();
-                break;
-            case R.id.micBtnOriginal:
-                onMicOriginalClicked();
+                Log.d("tasa", "micClicked");
+                if(isStt){
+                    onMicClicked();
+                }else{
+                    onMicOriginalClicked();
+                }
                 break;
             case R.id.homeBtn:
                 vibrator.vibrate(200);
@@ -298,7 +341,7 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
 
 
     public void onMicClicked() {
-
+        Log.d("tasa", "onMicCLicked()");
         CountDownTimer timer = new CountDownTimer(5000, 1000) {
             public void onTick(long millisUntilFinished) {
             }
@@ -421,6 +464,7 @@ public class RemoteView extends AppCompatActivity implements View.OnClickListene
     });
 
     public void onMicOriginalClicked() {
+        Log.d("tasa", "onMicOriginalClicked");
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Say command. Numbers not supported.");
