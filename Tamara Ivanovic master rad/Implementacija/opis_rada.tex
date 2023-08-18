@@ -8,9 +8,9 @@
 \begin{document}
 
 \subsection{Instalacija}
-Instaliranje Android aplikacija na mobilne telefone je moguće na više načina. Najjednostavniji način je preuzimanje aplikacije iz \textit{Google Play} prodavnice. Ako aplikacija nije dostupna preko prodavnice, može se instalirati preuzimanjem datoteke u formatu \textbf{APK} (eng. \textit{Android Package}). \textbf{APK} predstavlja format datoteka koji OS Android koristi za instaliranje i distribuciju aplikacija. Ova datoteka se kreira u \textit{build} direktorijumu projekta nakon što se u \textit{Android Studio}-u odabere opcija \textit{build}. Za aplikaciju \textit{Daljinski za digitalnu televiziju} instalaciona datoteka je daljinski.apk \cite{sajt:daljiskiApk}. Klikom na preuzetu datoteku, koja se može naći u direktorijumu gde se čuvaju preuzete datoteke, pokreće se instalacija aplikacije.
+Instaliranje Android aplikacija na mobilne telefone je moguće na više načina. Najjednostavniji način je preuzimanje aplikacije iz \textit{Google Play} prodavnice. Ako aplikacija nije dostupna preko prodavnice, može se instalirati preuzimanjem datoteke u formatu APK (eng. \textit{Android Package}). APK predstavlja format datoteka koji OS Android koristi za instaliranje i distribuciju aplikacija. Ova datoteka se kreira u \textit{build} direktorijumu projekta nakon što se u \textit{Android Studio}-u odabere opcija \textit{build}. Za aplikaciju \textit{Daljinski za digitalnu televiziju} instalaciona datoteka je daljinski.apk \cite{sajt:daljiskiApk}. Klikom na preuzetu datoteku, koja se može naći u direktorijumu gde se čuvaju preuzete datoteke, pokreće se instalacija aplikacije.
 
-Za potrebe testiranja aplikacije tokom implementacije najčešće se koriste dva načina instaliranja. Za njih je potrebno omogućiti opcije programera (eng. \textit{developer options}) na mobilnom uređaju i da se uređaj poveže pomoću USB kabla sa računarom na kom se nalazi k\^{o}d. Prva mogućnost pokretanja je da se u \textit{Android Studio}-u pritisne dugme \textit{Run}. Druga opcija je da na računaru postoji instaliran \textbf{adb} (eng. \textit{Android Debug Bridge}) i u terminalu da se pokrene komanda \verb|adb install app-debug.apk|. 
+Za potrebe testiranja aplikacije tokom implementacije najčešće se koriste dva načina instaliranja. Za njih je potrebno omogućiti opcije programera (eng. \textit{developer options}) na mobilnom uređaju i da se uređaj poveže pomoću USB kabla sa računarom na kom se nalazi k\^{o}d. Prva mogućnost pokretanja je da se u \textit{Android Studio}-u pritisne dugme \textit{Run}. Druga opcija je da na računaru postoji instaliran adb (eng. \textit{Android Debug Bridge}) i u terminalu da se pokrene komanda \verb|adb install app-debug.apk|. 
 
 \subsection{Pokretanje i korišćenje}
 
@@ -91,36 +91,66 @@ Na uređaju sa kojim se pokušava uparivanje se prikazuje četvorocifren broj ka
     \label{fig:obavestenja}
 \end{figure}
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth,keepaspectratio]{Implementacija/snimci_ekrana/meni.png}
+  \caption{Snimak ekrana, meni za izbor načina snimanja komandi}
+   \label{fig:meni_komande}
+\end{figure}
 
+Dalje korišćenje aplikacije je isto kao i korišćenje fizičkog daljinskog upravljača. Pri svakom pritisku dugmeta će korisnik osetiti blagu vibraciju što ujedno obaveštava i da je dugme pritisnuto. U slučaju kada nije data dozvola za korišćenje mikrofona nije moguće zadavati komande glasom i tada je dugme za mikrofon onemogućeno. U suprotnom korisnik može neometano da ga koristi. 
 
-Dalje korišćenje aplikacije je isto kao i korišćenje fizičkog daljinskog upravljača. Pri svakom pritisku dugmeta će korisnik osetiti blagu vibraciju što ujedno obaveštava i da je dugme pritisnuto. U slučaju kada nije data dozvola za korišćenje mikrofona nije moguće zadavati komande glasom i tada su dugmići za mikrofone onemogućeni. U suprotnom korisnik može neometano da ih koristi.
-\begin{description}
-\item[Levo dugme] za mikrofon koje je tamnije boje koristi \textit{Google Cloud API}. Pri pritisku dugmeta na donjem delu ekrana pojaviće se poruka da je snimanje započeto i dugme će biti onemogućeno dokle god mikrofon sluša. Nakon pet sekundi prikazaće se poruka da je snimanje završeno, dugme će biti omogućeno i ukoliko je prepoznata komanda ona će se izvršiti.
-\item[Desno dugme] koje je svetlije boje pokreće mikrofon generisan na standardni način koji obezbeđuje \textit{Google}. Pritiskom na dugme se pojavljuje polje generisano od strane \textit{Google}-a kao na slici \ref{fig:google_slusanje}. Izgled tog polja pri neuspešnom slušanju je prikazan na slici \ref{fig:google_neuspesno}, a pri uspešnom na slici \ref{fig:google_uspesno}. Pri uspešnom slušanju kao i u prethodnom slučaju izvršiće se zadata komanda.
-\end{description}
+Pritiskom na meni u gornjem desnom uglu ekrana prikazuje se ekran kao na slici \ref{fig:meni_komande}. Ovde korisnik bira način na koji će se snimati i obrađivati glasovne komande kada se pritisne na dugme mikrofona. Ukoliko je izabrana opcija \textit{Standarni mikrofon} pritiskom na dugme mikrofona se pojavljuje predefinisano polje koje kompanija \textit{Google} pruža kroz standardnu biblioteku Androida, kao na slici \ref{fig:google_slusanje}. Izgled tog polja pri neuspešnom slušanju je prikazan na slici \ref{fig:google_neuspesno}, a pri uspešnom na slici \ref{fig:google_uspesno}. Pri uspešnom slušanju izvršiće se zadata komanda. Ukoliko je izabrana opcija \textit{Mikrofon sa upotrebon Google Speech-to-Text API-ja} pri pritisku dugmeta na donjem delu ekrana pojaviće se poruka da je snimanje započeto. Dugme će biti onemogućeno dokle god mikrofon sluša. Nakon pet sekundi prikazaće se poruka da je snimanje završeno, dugme će biti omogućeno i ukoliko je prepoznata komanda ona će se izvršiti.
+
 Komande koje su podržane na ovaj način su prikazane u tabeli \ref{tbl:komande}.
+
+% %%===================== TABELA =============================================================
+% \begin{table}
+% \centering
+% \caption{Podržane glasovne komande}
+% \label{tbl:komande}
+% \begin{tabular}{p{0.2\linewidth} | p{0.4\linewidth}p{0.4\linewidth}}
+% \toprule
+% Funkcionalnost & Komanda na engleskom jeziku & Komanda na srpskom jeziku \\
+% \toprule
+% Uključivanje i gašenje uređaja&power, power on, on, power off, off, turn on, turn off, turn on tv, turn off tv, sleep & uključi, ugasi, uključi se, ugasi se, uključi tv, ugasi tv\\\midrule
+% Prikaz tv programa &guide, show guide, all channels, show channels &prikaži kanale, svi kanali, kanali, prikaži sve kanale\\\midrule
+% Prikaz dostupnih filmova&movie, movies, show movie, show movies, film&filmovi, svi filmovi, lista filmova, prikaži filmove, prikaži listu filmova, prikaži sve filmove \\\midrule
+% Kanali uživo&tv, live tv, play live, play live tv&uživo, tv uživo, pusti tv, pusti uživo, prikaži uživo \\\midrule
+% Ok &ok, okay, okey&ok, okej \\\midrule
+% Nazad&back, return, go back&nazad, vrati, vrati se\\\midrule
+% Povratak na početni ekran&home, home screen, show home, go to home, go to home screen& -\\\midrule
+% Pojačavanje zvuka&volume up, louder, up volume&pojačaj, glasnije, jače, pojačaj ton\\\midrule
+% Stišavanje zvuka&volume down, quieter, down volume&utišaj, tiše, smanji, smanji ton, snizi ton\\\midrule
+% Gašenje zvuka&mute, silent&tišina, ugasi zvuk \\\midrule
+% Sledeći kanal&up, channel up, next, next channel&sledeći kanal, sledeći, gore, pusti sledeći \\\midrule
+% Prethodni kanal&down, channel down, previous, previous channel&prethodni kanal, prošli kanal \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+% %===========================================================================================
 
 %%===================== TABELA =============================================================
 \begin{table}
 \centering
-\caption{Podržane glasovne komande}
+\caption{Podržane glasovne komande, sve komande su podržane i na srpskom jeziku}
 \label{tbl:komande}
-\begin{tabular}{p{0.2\linewidth} | p{0.4\linewidth}p{0.4\linewidth}}
+\begin{tabular}{p{0.35\linewidth} | p{0.6\linewidth}}
 \toprule
-Funkcionalnost & Komanda na engleskom jeziku & Komanda na srpskom jeziku \\
+Funkcionalnost & Komanda na engleskom jeziku\\
 \toprule
-Uključivanje i gašenje uređaja&power, power on, on, power off, off, turn on, turn off, turn on tv, turn off tv, sleep & uključi, ugasi, uključi se, ugasi se, uključi tv, ugasi tv\\\midrule
-Prikaz tv programa &guide, show guide, all channels, show channels &prikaži kanale, svi kanali, kanali, prikaži sve kanale\\\midrule
-Prikaz dostupnih filmova&movie, movies, show movie, show movies, film&filmovi, svi filmovi, lista filmova, prikaži filmove, prikaži listu filmova, prikaži sve filmove \\\midrule
-Kanali uživo&tv, live tv, play live, play live tv&uživo, tv uživo, pusti tv, pusti uživo, prikaži uživo \\\midrule
-Ok &ok, okay, okey&ok, okej \\\midrule
-Nazad&back, return, go back&nazad, vrati, vrati se\\\midrule
-Povratak na početni ekran&home, home screen, show home, go to home, go to home screen& -\\\midrule
-Pojačavanje zvuka&volume up, louder, up volume&pojačaj, glasnije, jače, pojačaj ton\\\midrule
-Stišavanje zvuka&volume down, quieter, down volume&utišaj, tiše, smanji, smanji ton, snizi ton\\\midrule
-Gašenje zvuka&mute, silent&tišina, ugasi zvuk \\\midrule
-Sledeći kanal&up, channel up, next, next channel&sledeći kanal, sledeći, gore, pusti sledeći \\\midrule
-Prethodni kanal&down, channel down, previous, previous channel&prethodni kanal, prošli kanal \\
+Uključivanje i gašenje uređaja&power, power on, on, power off, off, turn on, turn off, turn on tv, turn off tv, sleep \\\midrule
+Prikaz tv programa &guide, show guide, all channels, show channels \\\midrule
+Prikaz dostupnih filmova&movie, movies, show movie, show movies, film\\\midrule
+Kanali uživo&tv, live tv, play live, play live tv\\\midrule
+Ok &ok, okay, okey\\\midrule
+Nazad&back, return, go back\\\midrule
+Povratak na početni ekran&home, home screen, show home, go to home, go to home screen\\\midrule
+Pojačavanje zvuka&volume up, louder, up volume\\\midrule
+Stišavanje zvuka&volume down, quieter, down volume\\\midrule
+Gašenje zvuka&mute, silent\\\midrule
+Sledeći kanal&up, channel up, next, next channel\\\midrule
+Prethodni kanal&down, channel down, previous, previous channel\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -149,39 +179,17 @@ Prethodni kanal&down, channel down, previous, previous channel&prethodni kanal, 
   \caption{Prikaz uspeha}
    \label{fig:google_uspesno}
     \end{subfigure}
-    \caption{Snimci ekrana polja za slušanje generisanog od strane kompanije Gugl}
+    \caption{Snimci ekrana predefinisanog polja za slušanje}
     \label{fig:obavestenja}
 \end{figure}
 
-% \begin{figure}[h!]
-%   \centering
-%   \includegraphics[width=9cm,height=9cm,keepaspectratio]{Implementacija/snimci_ekrana/10_obican_google_slusanje.jpg}
-%   \caption{Snimak ekrana, Google generisano polje za slušanje}
-%    \label{fig:google_slusanje}
-% \end{figure}
 
-
-% \begin{figure}[h!]
-% \centering
-% \begin{minipage}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=9cm,height=9cm,keepaspectratio]{Implementacija/snimci_ekrana/11_obican_google_neuspesno.jpg}
-%   \caption{Snimak ekrana, Google generisano polje za slušanje prikaz neuspeha}
-%   \label{fig:google_neuspesno}
-% \end{minipage}%
-% \begin{minipage}{.5\textwidth}
-%   \centering
-%   \includegraphics[width=9cm,height=9cm,keepaspectratio]{Implementacija/snimci_ekrana/11_obican_google_uspesno.jpg}
-%   \caption{Snimak ekrana, Google generisano polje za slušanje prikaz uspeha}
-%    \label{fig:google_uspesno}
-% \end{minipage}
-% \end{figure}
 
 Ukoliko korisnik želi da prekine konekciju sa uređajem dovoljno je da pritisne dugme za otkazivanje konekcije koje ga vraća na početni ekran aplikacije. Tada će ponovo biti izvršena pretraga i izlistani pronađeni uređaji. Izlazak iz aplikacije bez prekida konekcije omogućava da korisnik ostane povezan sa uređajem i da pri sledećem pokretanju aplikacije odmah može da koristi sve funkcionalnosti bez ponovnog povezivanja.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\textwidth]{Implementacija/snimci_ekrana/komande_sa_opisom.png}
+  \includegraphics[width=\textwidth]{Implementacija/snimci_ekrana/komande_sa_opisom.jpg}
   \caption{Snimak ekrana, opis komandi}
    \label{fig:opis_komandi}
 \end{figure}

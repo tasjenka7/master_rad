@@ -39,11 +39,11 @@
 \begin{document}
 Nakon uspešnog pronalaska uređaja na mreži i prikaza liste na ekranu korisnika potrebno je obezbediti da se korisnik klikom na odabrani uređaj poveže sa istim. Za izvršenje ovog zadatka prvenstveno je potrebno obezbediti klasu koja omogućava komunikaciju korišćenjem UDP protokola (eng. \textit{User Datagram Protocol}) iz razloga što servis koji se koristi za potrebe ove aplikacije poržava UDP protokol. UDP ne garantuje isporuku paketa, ali zato omogućava brzu i efikasnu komunikaciju, što ga čini pogodnim za aplikacije u realnom vremenu, kao što je video strimovanje (eng. \textit{streaming}) i strimovanje zvuka. Metode koje su implementirane za izvršenje UDP komunikacije su:
 \begin{itemize}
-    \item \textit{connect} --- uspostavlja konekciju preko date IP adrese i porta. Ova metoda se izvršava asinhrono na novoj niti. Za uspostavljanje konekcije se koristi klasa \textit{DatagramSocket} koja je deo standardne biblioteke programskog jezika Java, 
-    \item \textit{disconnect} --- zatvara soket ukoliko postoji,
-    \item \textit{send} --- šalje komande na uređaj,
-    \item \textit{startListening} --- osluškuje na odgovor od strane servera (u ovoj implementaciji uređaja sa kojim se povezalo),
-    \item \textit{stopListening} --- prekida rad niti koja osluškuje čekajući odgovor.
+    \item \textit{connect} - uspostavlja konekciju preko date IP adrese i porta. Ova metoda se izvršava asinhrono na novoj niti. Za uspostavljanje konekcije se koristi klasa \textit{DatagramSocket} koja je deo standardne biblioteke programskog jezika Java; 
+    \item \textit{disconnect} - zatvara soket ukoliko postoji;
+    \item \textit{send} - šalje komande na uređaj;
+    \item \textit{startListening} - osluškuje na odgovor od strane servera (u ovoj implementaciji uređaja sa kojim se povezalo);
+    \item \textit{stopListening} - prekida rad niti koja osluškuje čekajući odgovor.
     
 \end{itemize}
 

@@ -49,7 +49,7 @@ Kreiranje Android aplikacija ne bi bilo moguće bez njenih osnovnih komponenti. 
 
 \subsection{Datoteka AndroidManifest.xml}
 \label{sec:manifest}
-Glavna datoteka bez koje nijedna Android aplikacija ne može da postoji je \textit{AndroidManifest.xml}. Pomoću ove XML datoteke OS Android i njegovi alati za izgradnju aplikacija (eng. \textit{build tools}) dobijaju sve potrebne informacije za instalaciju i pokretanje aplikacije. K\^{o}d počinje navođenjem verzije XML-a i enkodiranja, nakon čega sledi etiketa (eng. \textit{tag}) \textit{<manifest>} u okviru kog se piše ceo k\^{o}d. Obavezni deo koda je etiketa \textit{<application>}. Pregled osnovnih elemenata i njihovih opisa može se videti u kodu \ref{lst:manifest}. Više informacija o elementnima i njihovim opcijama može se pronaći na vebu \cite{sajt:manifest}.
+Glavna datoteka bez koje nijedna Android aplikacija ne može da postoji je \textit{AndroidManifest.xml}. Pomoću ove XML datoteke OS Android i njegovi alati za izgradnju aplikacija (eng. \textit{build tools}) dobijaju sve potrebne informacije za instalaciju i pokretanje aplikacije. K\^{o}d počinje navođenjem verzije XML-a i kodne sheme, nakon čega sledi etiketa (eng. \textit{tag}) \textit{<manifest>} u okviru kog se piše ceo k\^{o}d. Obavezni deo koda je etiketa \textit{<application>}. Pregled osnovnih elemenata i njihovih opisa može se videti u kodu \ref{lst:manifest}. Više informacija o elementnima i njihovim opcijama može se pronaći na vebu \cite{sajt:manifest}.
 
 \lstinputlisting[language=XML, caption= {Primer \textit{AndroidManifest.xml}, izvor: \cite{sajt:manifest}}, label = {lst:manifest}]{Manifest.xml}
 
@@ -65,7 +65,16 @@ Svaka aktivnost ima četiri osnovna stanja:
     \item Zaustavljeno (eng. \textit{stopped})
     \item Uništeno (eng. \textit{destroyed})
 \end{enumerate}
-Pri implementaciji svaka aktivnost mora da ima svoje ime i da nasleđuje klasu \textit{Activity}. Ova klasa pruža metode koji prate osnovna stanja životnog ciklusa aktivnosti: \textit{onCreate(), onStart(), onPause(), onResume(), onStop(), onDestroy() i onRestart()} \cite{book:and9cookbook}. Ove metode je potrebno predefinisati (eng.~\textit{override}) kako bi se definisala ponašanja aktivnosti za svaku promenu njenog stanja. 
+Pri implementaciji svaka aktivnost mora da ima svoje ime i da nasleđuje klasu \textit{Activity}. Ova klasa pruža metode koji prate osnovna stanja životnog ciklusa aktivnosti: \textit{onCreate(), onStart(), onPause(), onResume(), onStop(), onDestroy() i onRestart()} \cite{book:and9cookbook}. Ove metode je potrebno predefinisati (eng.~\textit{override}) kako bi se definisala ponašanja aktivnosti za svaku promenu njenog stanja. Životni ciklus aktivnosti je prikazan na slici \ref{fig:zivotniCiklus}.
+
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.9\textwidth]{Android/lifecycle-srpski.jpg}
+  \caption{Životni ciklus aktivnosti, slika preuzeta sa \cite{sajt:zivotniCiklusSlika}}
+  \label{fig:zivotniCiklus}
+\end{figure}
+
 
 Metod \textit{onCreate()} je metod u kojem se nalazi logika koja je potrebna da se izvrši pri prvom pokretanju aktivnosti. U njemu je potrebno uraditi sve inicijalizacije osnovnih komponenti aktivnosti kao i inicijalizaciju statičkih promenljivih, stavljanje podataka u liste... Iz ovog metoda mora se pozvati metod \textit{setContentView()} koji određuje prikaz grafičkog korisničkog interfejsa. Nakon izvršavanja \textit{onCreate() }metoda uvek se poziva metod \textit{onStart()}.
 
@@ -89,7 +98,7 @@ Servis je komponenta koja izvršava svoje zadatke u pozadini i najčešće se ko
     \item \textit{Vezani} (eng. \textit{bound}) servisi se izvršavaju kada je neka komponenta aplikacije povezana sa servisom, odnosno dokle god postoji neka komponenta kojoj je potrebno izvršavanje zadataka koje dati servis izvršava.
 \end{description}
 
-Na osnovu životnog ciklusa servisa razlikujemo pokrenute (eng. \textit{started}) servise i povezane (eng. \textit{bounded}). Kod pokrenutih servis se inicijalizuje pozivom \textit{startService()} metode, a zaustavlja kada komponenta pozove metod \textit{stopService() }ili ukoliko sam servis pozove metod \textit{stopSelf()}. Povezani se mogu doživeti kao klijent-server struktura zato što komponente mogu da šalju zahteve servisu, kao i da dohvataju rezultate. U trenutku kada neka komponenta pozove metod \textit{bindService()} i time se poveže sa servisom servis se smatra povezanim, a tek kada se sve komponente aplikacije koje su bile povezane sa njim oslobode pozivom \textit{unbindService()} servis prestaje sa radom. Svi navedeni metodi su iz klase \textit{Service} koju je neophodno da svaki servis nasledi pri implementaciji.
+Na osnovu životnog ciklusa servisa razlikujemo pokrenute (eng. \textit{started}) servise i povezane (eng. \textit{bounded}). Pokrenut servis se inicijalizuje pozivom \textit{startService()} metode, a zaustavlja kada komponenta pozove metod \textit{stopService() }ili ukoliko sam servis pozove metod \textit{stopSelf()}. Povezani servisi se mogu doživeti kao klijent-server orgqanizacija zato što komponente mogu da šalju zahteve servisu, kao i da dohvataju rezultate. U trenutku kada neka komponenta pozove metod \textit{bindService()} i time se poveže sa servisom servis se smatra povezanim, a tek kada se sve komponente aplikacije koje su bile povezane sa njim oslobode pozivom \textit{unbindService()} servis prestaje sa radom. Svi navedeni metodi su iz klase \textit{Service} koju je neophodno da svaki servis nasledi pri implementaciji.
 
 
 \subsection{Prijemnici}

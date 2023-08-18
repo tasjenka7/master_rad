@@ -10,29 +10,29 @@
 K\^{o}d svake Android aplikacije se nalazi u direktorijumu: \textbf{app}. Osnovnu strukturu direktorijuma \textbf{app} bilo koje Android aplikacije čine poddirektorijumi: 
 
 \begin{itemize}
-\item \textit{build} sa izvršnom verzijom koda i svim generisanim datotekama,
-\item \textit{libs} sa eksternim bibliotekama odnosno bibliotekama koje nisu deo Androida i programskih jezika Java ili Kotlin i
+\item \textit{build} sa izvršnom verzijom koda i svim generisanim datotekama;
+\item \textit{libs} sa eksternim bibliotekama odnosno bibliotekama koje nisu deo Androida i programskih jezika Java ili Kotlin;
 \item \textit{src} sa izvornim kodom.
 \end{itemize}
 
  Direktorijum \textbf{src} se uglavnom sastoji od sledećih poddiretkorijuma: 
 \begin{itemize}
-\item \textit{AndroidTest} u kom se smeštaju svi testovi koje je potrebno pokrenuti na Android uređaju, 
-\item \textit{test} u kom se smeštaju svi testovi za testiranje jedinica koda (eng. \textit{unit tests})
+\item \textit{AndroidTest} u kom se smeštaju svi testovi koje je potrebno pokrenuti na Android uređaju;
+\item \textit{test} u kom se smeštaju svi testovi za testiranje jedinica koda (eng. \textit{unit tests});
 \item \textit{main} u kom se nalazi ceo izvorni k\^{o}d.
 \end{itemize}
 
 Projekat implementacije upravljača za digitalnu televiziju je smešten u direktorijumu pod nazivom \textit{RemoteControlApp}. Srž aplikacije se nalazi u poddirektorijumu \textbf{main}, a za ovu aplikaciju ovaj direktorijum ima sledeću strukturu:
 \begin{itemize}
-\item \textit{AndroidMainifest.xml} --- datoteka koji opisuje glavne postavke aplikacije,
-\item \textit{res} --- direktorijum sa svim XML datotekama koje čine korisnički interfejs (eng. \textit{user interface}) aplikacije,
-\item \textit{java} --- direktorijum sa svim klasama i interfejsima aplikacije
-\item \textit{proto} --- direktorijum sa \textit{.proto} datotekama koje su neophodne za korišćenje \textit{Google Cloud API}-ja.
+\item \textit{AndroidMainifest.xml} - datoteka koji opisuje glavne postavke aplikacije;
+\item \textit{res} - direktorijum sa svim XML datotekama koje čine korisnički interfejs (eng. \textit{user interface}) aplikacije;
+\item \textit{java} - direktorijum sa svim klasama i interfejsima aplikacije;
+\item \textit{proto} - direktorijum sa \textit{.proto} datotekama koje su neophodne za korišćenje \textit{Google Cloud API}-ja.
 \end{itemize}
 
 \section{Upravljanje procesom izgradnje i određivanje zavisnosti aplikacije}
 
-Važne datoteke pri postavljanju projekta su \textbf{\textit{build.gradle}} datoteke koje služe da  upravljaju procesom izgradnje i odrede zavisnosti (eng. \textit{dependency}) aplikacije. Ove datoteke se generišu automatski pri kreiranju projekta, ali je moguće dodati sve dodatne zavisnosti koje budu potrebne.
+Važne datoteke pri postavljanju projekta su \textit{build.gradle} datoteke koje služe da  upravljaju procesom izgradnje i odrede zavisnosti (eng. \textit{dependency}) aplikacije. Ove datoteke se generišu automatski pri kreiranju projekta, ali je moguće dodati sve dodatne zavisnosti koje budu potrebne.
 
 Postoje dva tipa ovih datoteka --- na nivou projekta i na nivou modula. Datoteku na nivou projekta čini skup pravila koja važe za ceo projekat, dok datoteke na nivou modula čine pravila za modul u kom se nalazi datoteka. Svaka ova datoteka se sastoji od više blokova koji grupišu unutar sebe pravila, odnosno opcije koje se primenjuju.
 
@@ -58,9 +58,9 @@ Svaki ekran sa kojim se korisnik može susresti mora imati korisnički interfejs
 \begin{description}
 \item[\textbf{activity\_choose\_stb}] predstavlja plan ekrana za odabir konekcije, odnosno STB uređaja sa kojim korisnik želi da se poveže. Ovaj plan je inicijalno sastavljen od tri komponente koje se prikazuju po potrebi kada im se u kodu podesi vidljivost. Komponente su:
 \begin{itemize}
-    \item \textit{RecyclerView} sa id-jem \textit{@+id/rv\_boxes\_list} koji prikazuje spisak uređaja na mreži
-    \item \textit{ProgressBar} koji može poslužiti prilikom učitavanja
-    \item \textit{RelativeLayout} sa id-jem \textit{@+id/rl\_pairing\_container} koji se sastoji od tekstualnog polja sa uputstvom za unos koda za uparivanje, polja za unos koda i dugmeta za potvrdu 
+    \item \textit{RecyclerView} sa id-jem \textit{@+id/rv\_boxes\_list} koji prikazuje spisak uređaja na mreži;
+    \item \textit{ProgressBar} koji može poslužiti prilikom učitavanja;
+    \item \textit{RelativeLayout} sa id-jem \textit{@+id/rl\_pairing\_container} koji se sastoji od tekstualnog polja sa uputstvom za unos koda za uparivanje, polja za unos koda i dugmeta za potvrdu.
 \end{itemize}
 \item[\textbf{remote\_control\_scene}] predstavlja izgled daljinskog upravljača. Korisnički interfejs ovog plana kao i shematski plan zajedno sa svim ograničenjima se može videti na slici \ref{fig:remoteScena}. Ovaj plan se sastoji od velikog broja dugmica koji su vizuelno intuitivni korisniku o svojim funkcionalnostima.
 \item[\textbf{stb\_view}] predstavlja jedan element \textit{RecyclerView}. Sastoji se od polja za tekst koje predstavlja ime uređaja. 
@@ -69,7 +69,7 @@ Svaki ekran sa kojim se korisnik može susresti mora imati korisnički interfejs
 %=================== SLIKA ======================================
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=\textwidth]{Implementacija/snimci_ekrana/remote_control_scene.png}
+  \includegraphics[width=\textwidth]{Implementacija/snimci_ekrana/shema_daljinskog.png}
   \caption{Korisnički interfejs i shematski plan daljinskog upravljača}
   \label{fig:remoteScena}
 \end{figure}
@@ -98,53 +98,79 @@ Za funkcionisanje aplikacije neophodno je da se omogući pronalaženje uređaja,
 
 Klase unutar paketa \textbf{stbs} su:
 \begin{itemize}
-\item Klasa \textit{ChooseAdapter} koja se koristi za prikaz liste pronađenih uređaja,
-\item Klasa \textit{ChooseConnection} koja se koristi za odabir i povezivanje sa izabranim uređajem,
-\item Klasa \textit{DiscoveryHandler} koja se koristi za pronalaženje dostupnih uređaja na mreži,
-\item Klasa \textit{NsdDiscover} koja se koristi za korišćenje NSD (eng. \textit{Network Service Discovery}) mehanizma za pronalaženje uređaja i
+\item Klasa \textit{ChooseAdapter} koja se koristi za prikaz liste pronađenih uređaja;
+\item Klasa \textit{ChooseConnection} koja se koristi za odabir i povezivanje sa izabranim uređajem;
+\item Klasa \textit{DiscoveryHandler} koja se koristi za pronalaženje dostupnih uređaja na mreži;
+\item Klasa \textit{NsdDiscover} koja se koristi za korišćenje NSD (eng. \textit{Network Service Discovery}) mehanizma za pronalaženje uređaja;
 \item Klasa \textit{Stb} koja predstavlja jedan uređaj i sadrži informacije o njemu.
 \end{itemize}
-Dijagram klasa ovog paketa se može videti na slici \ref{fig:dijagramStbs}.
+Komunikacija i izgled ovih klasa su prikazani na dijagramima na slic \ref{fig:dijagramStbs1} i slici \ref{fig:dijagramStbs2}.
 
 
 
 
-%=================== SLIKA ======================================
-\begin{sidewaysfigure}
-    \centering
-    \includegraphics[width=\textheight]{Implementacija/dijagrami/stbs_pakage_class_diagram.jpg}
-    \caption{Dijagram klasa za paket stbs}
-    \label{fig:dijagramStbs}
-\end{sidewaysfigure}
-%=====================================================================
-
-Klase unutar paketa \textbf{controller} su:
-\begin{itemize}
-\item Klasa \textit{CommandsHandler} koja je odgovorna za obradu i slanje komandi na uređaj,
-\item Klasa \textit{RemoteView} koja se bavi prikazom daljinskog upravljača i interakcijom korisnika sa aplikacijom,
-\item Klasa \textit{UdpClient} koja omogućava komunikaciju putem UDP protokola i
-\item Klasa \textit{StreamingRecognizeClient} koja se koristi za obradu audio podataka i prepoznavanje govora pomoću \textit{Google Cloud API}-ja. 
-\end{itemize}
-Komunikacija i izgled ovih klasa su prikazani na dijagramu \ref{fig:dijagramController}.
-
+% %=================== SLIKA ======================================
+% \begin{sidewaysfigure}
+%     \centering
+%     \includegraphics[width=\textheight]{Implementacija/dijagrami/stbs_pakage_class_diagram_2.jpg}
+%     \caption{Dijagram klasa za paket stbs}
+%     \label{fig:dijagramStbs}
+% \end{sidewaysfigure}
+% %=====================================================================
 
 %=================== SLIKA ======================================
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=\textwidth,height=0.65\paperheight]{Implementacija/dijagrami/controller_package_class_diagram.jpg}
-  \caption{Dijagram klasa za paket controller}
-  \label{fig:dijagramController}
+  \includegraphics[width=\textwidth]{Implementacija/dijagrami/stb_package_1.drawio.png}
+    \caption{Dijagram klasa za paket stbs - klase za pretragu uređaja}
+    \label{fig:dijagramStbs1}
 \end{figure}
 %=====================================================================
+
+%=================== SLIKA ======================================
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=0.9\textheight]{Implementacija/dijagrami/stbs_package_2.drawio.png}
+    \caption{Dijagram klasa za paket stbs - klase za odabir uređaja}
+    \label{fig:dijagramStbs2}
+\end{sidewaysfigure}
+%=====================================================================
+
+
+
+Klase unutar paketa \textbf{controller} su:
+\begin{itemize}
+\item Klasa \textit{CommandsHandler} koja je odgovorna za obradu i slanje komandi na uređaj;
+\item Klasa \textit{RemoteView} koja se bavi prikazom daljinskog upravljača i interakcijom korisnika sa aplikacijom;
+\item Klasa \textit{UdpClient} koja omogućava komunikaciju putem UDP protokola;
+\item Klasa \textit{StreamingRecognizeClient} koja se koristi za obradu audio podataka i prepoznavanje govora pomoću \textit{Google Cloud API}-ja. 
+\end{itemize}
+Komunikacija i izgled ovih klasa su prikazani kroz dva dijagrama \ref{fig:dijagramController1} i \ref{fig:dijagramController1}.
+
+
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=\textheight]{Implementacija/dijagrami/package_controller_remote_recognize.png.png}
+   \caption{Dijagram klasa za paket controller za klase \textit{RemoteView} i \textit{StreamingRecognizeClient}}
+  \label{fig:dijagramController1}
+\end{sidewaysfigure}
+
+
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=\textheight]{Implementacija/dijagrami/controller_package_handler.png}
+  \caption{Dijagram klasa za paket controller za klase \textit{CommandsHandler} i \textit{UdpClient}}
+  \label{fig:dijagramController2}
+\end{sidewaysfigure}
 
 
 
 Pored ovih klasa u glavnom paketu aplikacjie nalaze se sledeće klase i interfejsi:
 \begin{itemize}
-\item Interfejs \textit{AsyncDataReceiver} se koristi kada je potrebno vratiti specifične podatke nakon završetka asinhrone operacije.,
-\item Interfejs \textit{AsyncReceiver} se koristi kada je potrebno samo obavestiti o uspehu ili neuspehu asinhrone operacije bez vraćanja specifičnih podataka,
-\item Interfejs \textit{OnItemClickedListener} se koristi za obradu klikova na elemente liste,
-\item Klasa \textit{Singleton} se koristi za implementaciju Singlton (eng. \textit{Singleton}) šablona,
+\item Interfejs \textit{AsyncDataReceiver} se koristi kada je potrebno vratiti specifične podatke nakon završetka asinhrone operacije;
+\item Interfejs \textit{AsyncReceiver} se koristi kada je potrebno samo obavestiti o uspehu ili neuspehu asinhrone operacije bez vraćanja specifičnih podataka;
+\item Interfejs \textit{OnItemClickedListener} se koristi za obradu klikova na elemente liste;
+\item Klasa \textit{Singleton} se koristi za implementaciju Singlton (eng. \textit{Singleton}) šablona;
 \item Klasa \textit{Constants} se koristi da skladišti sve konstante potrebne u razvoju aplikacije.
 \end{itemize}
 Njihov dijagram klasa je prikazan na slici \ref{fig:dijagramRoot}.

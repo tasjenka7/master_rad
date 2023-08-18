@@ -45,18 +45,18 @@ Da bi se iskoristio NSD aplikacija mora da implementira osluškivač pretrage (e
 
 Osluškivač pretrage reaguje na različite događaje u procesu otkrivanja servisa. Metode koje su dostupne da se prepišu i prilagode potrebama aplikacije su:
 \begin{itemize}
-    \item \textit{onDiscoveryStarted} --- automatski se poziva kada počne pretraga, uz pomoć klase \textit{WiFiManager} dohvataju se dostupne informacije o bežičnoj internet konekciji,
-    \item \textit{onServiceFound} --- poziva se kada se otkrije neki servis na lokalnoj mreži, ovde se vrše provere da li servis koji se traži i definiše se šta se izvršava ukoliko je pronađen traženi servis,
-    \item \textit{onServiceLost} --- poziva se kada servis više nije dostupan,
-    \item \textit{onDiscoveryStopped} --- poziva se kada se zaustavi pretraga, 
-    \item \textit{onStartDiscoveryFailed} --- poziva se ukoliko nakon nekog vremena nije bilo moguće da se pokrene pretraga,
-    \item \textit{onStopDiscoveryFailed} --- poziva se ukoliko nakon nekog vremena nije bilo moguće da se zaustavi pretraga.
+    \item \textit{onDiscoveryStarted} - automatski se poziva kada počne pretraga, uz pomoć klase \textit{WiFiManager} dohvataju se dostupne informacije o bežičnoj internet konekciji;
+    \item \textit{onServiceFound} - poziva se kada se otkrije neki servis na lokalnoj mreži, ovde se vrše provere da li servis koji se traži i definiše se šta se izvršava ukoliko je pronađen traženi servis;
+    \item \textit{onServiceLost} - poziva se kada servis više nije dostupan;
+    \item \textit{onDiscoveryStopped} - poziva se kada se zaustavi pretraga; 
+    \item \textit{onStartDiscoveryFailed} - poziva se ukoliko nakon nekog vremena nije bilo moguće da se pokrene pretraga;
+    \item \textit{onStopDiscoveryFailed} - poziva se ukoliko nakon nekog vremena nije bilo moguće da se zaustavi pretraga.
 \end{itemize}
 
 Osluškivač rezultata je zadužen da kada se pronađu servisi da dohvati i upravlja informacijama koje su dobijene. Neke od informacija koje se dobijaju ovim putem su naziv hosta i broj porta. Metode koje je moguće prepisati prilikom inicijalizacije osluškivača rezultata su:
 \begin{itemize}
-    \item \textit{onServiceResolved} --- ukoliko su pronalazak servisa i dohvatanje informacija o njemu uspešno izvršeni poziva se ova metoda koja dalje prosleđuje informacije,
-    \item \textit{onResolveFailed} --- definiše ponašanje ukoliko rešavanje ne uspe i pruža informacije o grešci koja je nastupila.
+    \item \textit{onServiceResolved} - ukoliko su pronalazak servisa i dohvatanje informacija o njemu uspešno izvršeni poziva se ova metoda koja dalje prosleđuje informacije;
+    \item \textit{onResolveFailed} - definiše ponašanje ukoliko rešavanje ne uspe i pruža informacije o grešci koja je nastupila.
 \end{itemize}
 
 Koriščenje osluškivača na ovaj način obezbeđuje da se asinhrono izvršava otkrivanja i rešavanje mrežnih servisa. Ovim se sprečava da dođe do blokiranja korisničkog interfejsa dok se izvršavaju ove operacije. Samim tim korisnik nije svestan posla koji se dešava u pozadini i obezbeđuje se bolje korisničko iskustvo. 

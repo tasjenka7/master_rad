@@ -9,6 +9,7 @@ public void getStbList(final AsyncDataReceiver receiver){
                //kreiranja nove instance stb uredjaja,
                //dodavanje uredjaja u listu, 
                //provera da vec nije isti uredjaj u listi...
+            }  
         };
         nsdDiscover.startDiscovery();
-    }
+}
